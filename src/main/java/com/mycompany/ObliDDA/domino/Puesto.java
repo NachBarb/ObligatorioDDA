@@ -1,13 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.ObliDDA.domino;
 
-/**
- *
- * @author Martin
- */
 public class Puesto {
+    private Sector sector;
+    private Trabajador trabajador;
+    private int numeroPuesto;
+    private Llamada llamadaEnCurso;
+
+    public Puesto(int numeroPuesto) {
+        this.numeroPuesto = numeroPuesto;
+    }
+  
+    public Sector getSector() {
+        return sector;
+    }
+
+    public Trabajador getTrabajador() {
+        return trabajador;
+    }
+
+    public int getNumeroPuesto() {
+        return numeroPuesto;
+    }
+
+    public Llamada getLlamadaEnCurso() {
+        return llamadaEnCurso;
+    }
+    
     
 }

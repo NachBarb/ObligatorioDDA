@@ -1,13 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.ObliDDA.domino;
 
-/**
- *
- * @author Martin
- */
+import java.util.ArrayList;
+
 public class Sector {
     private String nombre;
+    private int numSector;
+    private int cantidadPuestos;
+    private ArrayList<Puesto> puestos;
+
+    public Sector(String nombre, int numSector, int cantidadPuestos) {
+        this.nombre = nombre;
+        this.numSector = numSector;
+        this.cantidadPuestos = cantidadPuestos;
+    }  
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getNumSector() {
+        return numSector;
+    }
+
+    public int getCantidadPuestos() {
+        return cantidadPuestos;
+    }
+
+    public ArrayList<Puesto> getPuestos() {
+        return puestos;
+    }   
 }
