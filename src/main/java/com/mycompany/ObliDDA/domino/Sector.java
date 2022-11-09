@@ -12,7 +12,7 @@ public class Sector {
         this.nombre = nombre;
         this.numSector = numSector;
         this.cantidadPuestos = cantidadPuestos;
-    }  
+    }
 
     public String getNombre() {
         return nombre;
@@ -29,4 +29,17 @@ public class Sector {
     public ArrayList<Puesto> getPuestos() {
         return puestos;
     }   
+    
+    public Puesto asignarTrabajador(Trabajador t) {
+        Puesto puesto = null;
+        boolean flag = false;
+        for (int i = 0; i < puestos.size() && !flag; i++) {
+            if (puestos.get(i) == null){
+                puesto = puestos.get(i);
+                puesto.setTrabajador(t);
+                flag = true;
+            }
+        }
+        return puesto;
+    }
 }

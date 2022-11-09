@@ -14,6 +14,10 @@ public class Puesto {
         return sector;
     }
 
+    public void setTrabajador(Trabajador trabajador) {
+        this.trabajador = trabajador;
+    }
+
     public Trabajador getTrabajador() {
         return trabajador;
     }
