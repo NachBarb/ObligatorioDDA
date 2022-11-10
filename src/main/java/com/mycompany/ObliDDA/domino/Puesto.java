@@ -1,10 +1,14 @@
 package com.mycompany.ObliDDA.domino;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Puesto {
     private Sector sector;
     private Trabajador trabajador;
     private int numeroPuesto;
     private Llamada llamadaEnCurso;
+    private ArrayList<Llamada> llamadas = new ArrayList<>();
 
     public Puesto(int numeroPuesto, Sector sector) {
         this.numeroPuesto = numeroPuesto;
@@ -31,5 +35,23 @@ public class Puesto {
         return llamadaEnCurso;
     }
     
+    public int getCantidadLlamadas() {
+        int cantidadLlamadas = llamadas.size();
+        if (llamadaEnCurso != null) {
+            cantidadLlamadas++;
+        }
+        return cantidadLlamadas;
+    }
     
+    public void agregarDescripcionLlamada(Llamada llamadaEnCurso, String descripcion) {
+        llamadaEnCurso.setDescripcion(descripcion);
+    }
+    
+    public void finalizarLlamada(Llamada llamadaEnCurso) {
+        if (llamadaEnCurso.getFin() == null) {
+            llamadaEnCurso.setFin(new Date());
+            llamadas.add(llamadaEnCurso);
+            llamadaEnCurso = null;            
+        }
+    }
 }

@@ -6,7 +6,7 @@ public class Sector {
     private String nombre;
     private int numSector;
     private int cantidadPuestos;
-    private ArrayList<Puesto> puestos;
+    private ArrayList<Puesto> puestos = new ArrayList<>();
 
     public Sector(String nombre, int numSector, int cantidadPuestos) {
         this.nombre = nombre;

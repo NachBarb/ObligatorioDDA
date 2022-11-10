@@ -1,9 +1,12 @@
 package logica;
 
 import com.mycompany.ObliDDA.domino.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CargaDeDatos {
-    public static void cargar(){
+    public static void cargar() throws ParseException {
         
         // Carga CLIENTES
         Cliente cli1 = new Cliente("Ignacio Barbisan", "12345678");
@@ -50,17 +53,23 @@ public class CargaDeDatos {
         s4.asignarPuestoASector(p6);
         s4.asignarPuestoASector(p7);
         s4.asignarPuestoASector(p8);
-        s5.asignarPuestoASector(p9);
+        s5.asignarPuestoASector(p9);     
         
         // Asignar Llamada
-        
-        
-        
-        
-        
-        
-        
-        
+        Llamada llamada1 = new Llamada(parseDate("2022-10-25 22:33:00"), parseDate("2022-10-25 22:37:00"), "Pedido de licencia");
+        Llamada llamada2 = new Llamada(parseDate("2022-10-25 22:33:00"), parseDate("2022-10-25 22:37:00"), "Pedido de licencia");
+
+           
+        System.out.println("llamada1  " + llamada1 );
+        System.out.println("llamada2  " + llamada1);       
+
         FachadaSistema.getInstancia().agregarTrabajador(t1);
     }
+    
+    // FORMATO "2022-10-25 22:33:00"
+    private static Date parseDate(String fecha) throws ParseException {
+            Date fechaParseada = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(fecha);
+            return fechaParseada;
+        }
+
 }
