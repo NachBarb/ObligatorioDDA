@@ -17,8 +17,7 @@ public class CargaDeDatos {
         Sector s2 = new Sector("Marketing", 2, 2);
         Sector s3 = new Sector("Administracion", 3, 2);
         Sector s4 = new Sector("Soporte", 4, 3);
-        Sector s5 = new Sector("Mantenimiento", 5, 1);
-        // Asignar lista de puestos
+        Sector s5 = new Sector("Mantenimiento", 5, 1);   
         
         // Carga TRABAJADORES
         Trabajador t1 = new Trabajador("Damian Martinez" , "11111111" , "Password1", s1);
@@ -30,20 +29,31 @@ public class CargaDeDatos {
         Trabajador t7 = new Trabajador("Paola Marti", "77777777", "Password1", s4);
         Trabajador t8 = new Trabajador("Naomi Rodriguez", "88888888", "Password1", s4);
         Trabajador t10 = new Trabajador("Clarisa Martinez", "10345678", "Password1",s5);
-        
-        
+                
         // Carga PUESTOS
-        Puesto p1 = new Puesto(1);
-        Puesto p2 = new Puesto(2);
-        Puesto p3 = new Puesto(3);
-        Puesto p4 = new Puesto(4);
-        Puesto p5 = new Puesto(5);
-        Puesto p6 = new Puesto(6);
-        Puesto p7 = new Puesto(7);
-        Puesto p8 = new Puesto(8);
-        Puesto p9 = new Puesto(9);
-        // Asignar Sector, Trabajador, Llamada
-      
+        Puesto p1 = new Puesto(1, s1);
+        Puesto p2 = new Puesto(2, s2);
+        Puesto p3 = new Puesto(3, s2);
+        Puesto p4 = new Puesto(4, s3);
+        Puesto p5 = new Puesto(5, s3);
+        Puesto p6 = new Puesto(6, s4);
+        Puesto p7 = new Puesto(7, s4);
+        Puesto p8 = new Puesto(8, s4);
+        Puesto p9 = new Puesto(9, s5);
+        
+        // Asignar lista de puestos a sector
+        s1.asignarPuestoASector(p1);
+        s2.asignarPuestoASector(p2);
+        s2.asignarPuestoASector(p3);
+        s3.asignarPuestoASector(p4);
+        s3.asignarPuestoASector(p5);
+        s4.asignarPuestoASector(p6);
+        s4.asignarPuestoASector(p7);
+        s4.asignarPuestoASector(p8);
+        s5.asignarPuestoASector(p9);
+        
+        // Asignar Llamada
+        
         
         
         
@@ -52,5 +62,5 @@ public class CargaDeDatos {
         
         
         FachadaSistema.getInstancia().agregarTrabajador(t1);
-         }
+    }
 }

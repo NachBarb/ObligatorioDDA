@@ -6,8 +6,9 @@ public class Puesto {
     private int numeroPuesto;
     private Llamada llamadaEnCurso;
 
-    public Puesto(int numeroPuesto) {
+    public Puesto(int numeroPuesto, Sector sector) {
         this.numeroPuesto = numeroPuesto;
+        this.sector = sector;
     }
   
     public Sector getSector() {

@@ -30,6 +30,20 @@ public class Sector {
         return puestos;
     }   
     
+    public void asignarPuestoASector(Puesto p) {
+        int existePuesto = 0;
+        if (puestos.size() < cantidadPuestos) {
+            for (int i = 0; i < puestos.size(); i++) {
+                if (puestos.get(i).getNumeroPuesto() == p.getNumeroPuesto()) {
+                    existePuesto ++;
+                }
+            }
+            if (existePuesto == 0) {
+                puestos.add(p);
+            }
+        }
+    }
+    
     public Puesto asignarTrabajador(Trabajador t) {
         Puesto puesto = null;
         boolean flag = false;
@@ -42,4 +56,6 @@ public class Sector {
         }
         return puesto;
     }
+    
+    //asignarLlamada()
 }
