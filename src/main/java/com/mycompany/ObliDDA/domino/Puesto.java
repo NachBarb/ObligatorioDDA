@@ -34,6 +34,10 @@ public class Puesto {
     public Llamada getLlamadaEnCurso() {
         return llamadaEnCurso;
     }
+
+    public void setLlamadaEnCurso(Llamada llamadaEnCurso) {
+        this.llamadaEnCurso = llamadaEnCurso;
+    }
     
     public int getCantidadLlamadas() {
         int cantidadLlamadas = llamadas.size();
@@ -53,5 +57,9 @@ public class Puesto {
             llamadas.add(llamadaEnCurso);
             llamadaEnCurso = null;            
         }
+    }
+    
+    public void agregarLlamada(Llamada call) {
+        llamadas.add(call);
     }
 }

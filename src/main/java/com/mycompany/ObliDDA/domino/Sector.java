@@ -30,7 +30,8 @@ public class Sector {
         return puestos;
     }   
     
-    public void asignarPuestoASector(Puesto p) {
+    public boolean asignarPuestoASector(Puesto p) {
+        boolean ok = false;
         int existePuesto = 0;
         if (puestos.size() < cantidadPuestos) {
             for (int i = 0; i < puestos.size(); i++) {
@@ -40,8 +41,10 @@ public class Sector {
             }
             if (existePuesto == 0) {
                 puestos.add(p);
+                ok = true;
             }
         }
+        return ok;
     }
     
     public Puesto asignarTrabajador(Trabajador t) {
@@ -57,5 +60,29 @@ public class Sector {
         return puesto;
     }
     
-    //asignarLlamada()
+    // la llamada tiene al cliente? el cliente tiene a la llamada ?
+    // la llamada se crea y se asigna o se cre al momento de asignar?
+    // tomando en cuenta que lo logico es que se cree la llamada 
+    // al momento de asiganarle un puesto
+    
+    // crea y asigna una llamada al primer puesto libre del sector
+    // *no crea la llamada hasta que no sea atendida por el puesto
+    public Puesto asignarLlamada() {
+        Puesto puesto = null;
+        Llamada call = null;
+        boolean flag = false;
+        for (int i = 0; i < puestos.size() && !flag; i++) {
+           if (puestos.get(i).getLlamadaEnCurso() == null) {
+               call = new Llamada();
+               puesto = puestos.get(i);
+               puesto.setLlamadaEnCurso(call);
+               flag = true;
+           }
+        }
+        return puesto;
+    } 
+    
+    public void asignarLlamada(Puesto puesto, Llamada call) {
+        puesto.agregarLlamada(call);
+    }
 }
