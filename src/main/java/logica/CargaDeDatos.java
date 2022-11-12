@@ -34,15 +34,15 @@ public class CargaDeDatos {
         Trabajador t10 = new Trabajador("Clarisa Martinez", "10345678", "Password1",s5);
                 
         // Carga PUESTOS
-        Puesto p1 = new Puesto(1, s1);
-        Puesto p2 = new Puesto(2, s2);
-        Puesto p3 = new Puesto(3, s2);
-        Puesto p4 = new Puesto(4, s3);
-        Puesto p5 = new Puesto(5, s3);
-        Puesto p6 = new Puesto(6, s4);
-        Puesto p7 = new Puesto(7, s4);
-        Puesto p8 = new Puesto(8, s4);
-        Puesto p9 = new Puesto(9, s5);
+        Puesto p1 = new Puesto(s1);
+        Puesto p2 = new Puesto(s2);
+        Puesto p3 = new Puesto(s2);
+        Puesto p4 = new Puesto(s3);
+        Puesto p5 = new Puesto(s3);
+        Puesto p6 = new Puesto(s4);
+        Puesto p7 = new Puesto(s4);
+        Puesto p8 = new Puesto(s4);
+        Puesto p9 = new Puesto(s5);
         
         // Asignar lista de puestos a sector
         s1.asignarPuestoASector(p1);
@@ -75,8 +75,15 @@ public class CargaDeDatos {
         s4.asignarLlamada(p8, call7);
         s5.asignarLlamada(p9, call8);
 
-        System.out.println("segundos " + call8.duracion());
+        System.out.println("call1 " + call1.getId());
+        System.out.println("call2 " + call2.getId());
+        System.out.println("call3 " + call3.getId());
+        System.out.println("call4 " + call4.getId());
         
+        System.out.println("p1 " + p1.getId());
+        System.out.println("p2 " + p2.getId());
+        System.out.println("p3 " + p3.getId());
+        System.out.println("p4 " + p4.getId());
 
         FachadaSistema.getInstancia().agregarTrabajador(t1);
     }
