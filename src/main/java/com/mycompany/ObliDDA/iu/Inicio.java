@@ -4,6 +4,9 @@
  */
 package com.mycompany.ObliDDA.iu;
 
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import logica.CargaDeDatos;
 
@@ -131,8 +134,13 @@ public class Inicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CargaDeDatos.cargar();
-                new Inicio().setVisible(true);
+                try {
+                    CargaDeDatos.cargar();
+                    new Inicio().setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("No se pudo cargar los datos");
+                }
             }
         });
     }

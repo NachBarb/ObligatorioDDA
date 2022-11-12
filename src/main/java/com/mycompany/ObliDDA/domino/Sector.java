@@ -59,15 +59,14 @@ public class Sector {
         }
         return puesto;
     }
-    
-    // la llamada tiene al cliente? el cliente tiene a la llamada ? RESUELTO FIXEAR      
-    public Puesto asignarLlamada() {
+          
+    public Puesto asignarLlamada(Cliente cliente) {
         Puesto puesto = null;
         Llamada call = null;
         boolean flag = false;
         for (int i = 0; i < puestos.size() && !flag; i++) {
            if (puestos.get(i).getLlamadaEnCurso() == null) {
-               call = new Llamada();
+               call = new Llamada(cliente);
                puesto = puestos.get(i);
                puesto.setLlamadaEnCurso(call);
                flag = true;
