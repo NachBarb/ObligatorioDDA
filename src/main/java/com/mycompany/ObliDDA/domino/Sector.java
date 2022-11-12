@@ -60,13 +60,7 @@ public class Sector {
         return puesto;
     }
     
-    // la llamada tiene al cliente? el cliente tiene a la llamada ?
-    // la llamada se crea y se asigna o se cre al momento de asignar?
-    // tomando en cuenta que lo logico es que se cree la llamada 
-    // al momento de asiganarle un puesto
-    
-    // crea y asigna una llamada al primer puesto libre del sector
-    // *no crea la llamada hasta que no sea atendida por el puesto
+    // la llamada tiene al cliente? el cliente tiene a la llamada ? RESUELTO FIXEAR      
     public Puesto asignarLlamada() {
         Puesto puesto = null;
         Llamada call = null;
@@ -77,8 +71,8 @@ public class Sector {
                puesto = puestos.get(i);
                puesto.setLlamadaEnCurso(call);
                flag = true;
-           }
-        }
+           } 
+        } //IF PARA EN ESPERA
         return puesto;
     } 
     
