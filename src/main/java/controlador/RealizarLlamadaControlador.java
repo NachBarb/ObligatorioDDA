@@ -17,4 +17,9 @@ public class RealizarLlamadaControlador {
         this.vista = vista;
     }
 
+    public void iniciarLlamada(){
+    this.vista.mensajeDeInicio();
+    }
+    
+    
 }
