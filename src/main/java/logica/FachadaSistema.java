@@ -1,19 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package logica;
 
 import com.mycompany.ObliDDA.domino.Trabajador;
 import com.mycompany.ObliDDA.domino.TrabajadorExcepcion;
 
-/**
- *
- * @author Martin
- */
 public class FachadaSistema {
-        private ServicioTrabajador servicioTrabajador;
-
+    private ServicioTrabajador servicioTrabajador;
     private static FachadaSistema instancia;
 
     private FachadaSistema() {
