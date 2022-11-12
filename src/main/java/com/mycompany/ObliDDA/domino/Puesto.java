@@ -6,14 +6,12 @@ import java.util.Date;
 public class Puesto {
     private Sector sector;
     private Trabajador trabajador;
-    private int numeroPuesto;
     private Llamada llamadaEnCurso;
     private ArrayList<Llamada> llamadas = new ArrayList<>();
     private static int serial = 1;
     private int id;
 
-    public Puesto(int numeroPuesto, Sector sector) {
-        this.numeroPuesto = numeroPuesto;
+    public Puesto(Sector sector) {
         this.sector = sector;
         this.id = serial++;
     }
@@ -32,10 +30,6 @@ public class Puesto {
 
     public Trabajador getTrabajador() {
         return trabajador;
-    }
-
-    public int getNumeroPuesto() {
-        return numeroPuesto;
     }
 
     public Llamada getLlamadaEnCurso() {
