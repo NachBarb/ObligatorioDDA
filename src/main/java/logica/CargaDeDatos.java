@@ -32,6 +32,7 @@ public class CargaDeDatos {
         Trabajador t7 = new Trabajador("Paola Marti", "77777777", "Password1", s4);
         Trabajador t8 = new Trabajador("Naomi Rodriguez", "88888888", "Password1", s4);
         Trabajador t10 = new Trabajador("Clarisa Martinez", "10345678", "Password1",s5);
+        
                 
         // Carga PUESTOS
         Puesto p1 = new Puesto(1, s1);
@@ -79,6 +80,7 @@ public class CargaDeDatos {
         
 
         FachadaSistema.getInstancia().agregarTrabajador(t1);
+        
     }
     
     // FORMATO "2022-10-25 22:33:00" "yyyy-MM-dd HH:mm:ss"

@@ -8,11 +8,14 @@ public class Puesto {
     private Trabajador trabajador;
     private int numeroPuesto;
     private Llamada llamadaEnCurso;
-    private ArrayList<Llamada> llamadas = new ArrayList<>();
+    private ArrayList<Llamada> llamadas;
 
     public Puesto(int numeroPuesto, Sector sector) {
         this.numeroPuesto = numeroPuesto;
         this.sector = sector;
+        this.trabajador = null;
+        this.llamadaEnCurso = null;
+        this.llamadas = new ArrayList<>();
     }
   
     public Sector getSector() {

@@ -4,6 +4,7 @@
  */
 package com.mycompany.ObliDDA.iu;
 
+import java.text.ParseException;
 import javax.swing.JFrame;
 import logica.CargaDeDatos;
 
@@ -87,8 +88,9 @@ public class Inicio extends javax.swing.JFrame {
     private void bTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTrabajadorActionPerformed
 
         Login dialogo = new Login(this, true);
-//      Login dialogo = new Login(this, true);
+        Login dialogo2 = new Login(this, true);
         dialogo.setVisible(true);
+        dialogo2.setVisible(true);
         dispose();
     }//GEN-LAST:event_bTrabajadorActionPerformed
 
@@ -131,8 +133,12 @@ public class Inicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CargaDeDatos.cargar();
-                new Inicio().setVisible(true);
+                try {
+                    CargaDeDatos.cargar();
+                    new Inicio().setVisible(true);
+                } catch (ParseException err) {
+                    System.out.println(err);
+                }
             }
         });
     }
