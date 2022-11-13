@@ -217,7 +217,7 @@ public class AtenderLlamada extends javax.swing.JDialog {
 
     private void inicializar() {
         tTrabajadorNombre.setText(trabajador.getNombre());
-//        tCliente.setText(trabajador.getPuesto().getLlamadaEnCurso().getCliente().getNombre());
+        tCliente.setText(trabajador.getPuesto().getLlamadaEnCurso().getCliente().getNombre());
         tSector.setText(trabajador.getSector().getNombre());
         tPuesto.setText(Integer.toString(trabajador.getPuesto().getNumeroPuesto()));
         tLlamada.setText(Integer.toString(trabajador.getPuesto().getCantidadLlamadas()));

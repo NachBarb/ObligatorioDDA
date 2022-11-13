@@ -65,7 +65,11 @@ public class Puesto {
     }
 
     public void agregarLlamada(Llamada call) {
-        llamadas.add(call);
+        if (call.getFin() != null) {
+            llamadas.add(call);
+        } else {
+            llamadaEnCurso = call;
+        }
     }
 
     public int promedioTiempoLlamada() {
@@ -73,11 +77,11 @@ public class Puesto {
         for (int i = 0; i < llamadas.size(); i++) {
             if (llamadas.get(i) != null) {
                 long difMiliSeconds = Math.abs(llamadas.get(i).getFin().getTime() - llamadas.get(i).getInicio().getTime());
-                long seconds = (difMiliSeconds/1000);
+                long seconds = (difMiliSeconds / 1000);
                 totalSeconds = totalSeconds + seconds;
             }
         }
-        int secondsInInt = (int)totalSeconds;
+        int secondsInInt = (int) totalSeconds;
         return secondsInInt;
     }
 }
