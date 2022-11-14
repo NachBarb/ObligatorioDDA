@@ -6,8 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CargaDeDatos {
+
     public static void cargar() throws ParseException {
-        
+
         // Carga CLIENTES
         Cliente cli1 = new Cliente("Ignacio Barbisan", "12345678");
         Cliente cli2 = new Cliente("Martin Bove", "87654321");
@@ -20,10 +21,10 @@ public class CargaDeDatos {
         Sector s2 = new Sector("Marketing", 2, 2);
         Sector s3 = new Sector("Administracion", 3, 2);
         Sector s4 = new Sector("Soporte", 4, 3);
-        Sector s5 = new Sector("Mantenimiento", 5, 1);   
-        
+        Sector s5 = new Sector("Mantenimiento", 5, 1);
+
         // Carga TRABAJADORES
-        Trabajador t1 = new Trabajador("Damian Martinez" , "11111111" , "Password1", s1);
+        Trabajador t1 = new Trabajador("Damian Martinez", "11111111", "Password1", s1);
         Trabajador t2 = new Trabajador("Facundo Amoroso", "22222222", "Password1", s2);
         Trabajador t3 = new Trabajador("Alexis Cabrera", "33333333", "Password1", s2);
         Trabajador t4 = new Trabajador("Nacho Bove", "44444444", "Password1", s3);
@@ -31,9 +32,8 @@ public class CargaDeDatos {
         Trabajador t6 = new Trabajador("Ignacio Bassetti", "66666666", "Password1", s4);
         Trabajador t7 = new Trabajador("Paola Marti", "77777777", "Password1", s4);
         Trabajador t8 = new Trabajador("Naomi Rodriguez", "88888888", "Password1", s4);
-        Trabajador t10 = new Trabajador("Clarisa Martinez", "10345678", "Password1",s5);
-        
-                
+        Trabajador t10 = new Trabajador("Clarisa Martinez", "10345678", "Password1", s5);
+
         // Carga PUESTOS
         Puesto p1 = new Puesto(1, s1);
         Puesto p2 = new Puesto(2, s2);
@@ -44,7 +44,7 @@ public class CargaDeDatos {
         Puesto p7 = new Puesto(7, s4);
         Puesto p8 = new Puesto(8, s4);
         Puesto p9 = new Puesto(9, s5);
-        
+
         // Asignar lista de puestos a sector
         s1.asignarPuestoASector(p1);
         s2.asignarPuestoASector(p2);
@@ -54,8 +54,8 @@ public class CargaDeDatos {
         s4.asignarPuestoASector(p6);
         s4.asignarPuestoASector(p7);
         s4.asignarPuestoASector(p8);
-        s5.asignarPuestoASector(p9);     
-        
+        s5.asignarPuestoASector(p9);
+
         // Carga LLAMADAS
         Llamada call1 = new Llamada(parseDate("2022-06-25 10:33:00"), parseDate("2022-06-25 10:37:00"), "Pedido de licencia", cli1);
         Llamada call2 = new Llamada(parseDate("2022-07-05 11:23:00"), parseDate("2022-07-05 11:40:00"), "Nuevo anuncio publicitario", cli2);
@@ -65,6 +65,7 @@ public class CargaDeDatos {
         Llamada call6 = new Llamada(parseDate("2022-10-01 13:04:00"), parseDate("2022-10-01 13:27:00"), "Solicitud de constancia", cli2);
         Llamada call7 = new Llamada(parseDate("2022-10-13 13:33:00"), parseDate("2022-10-13 13:57:00"), "Conexion de internet inestable", cli2);
         Llamada call8 = new Llamada(parseDate("2022-10-25 14:12:00"), parseDate("2022-10-25 14:37:00"), "Aire acondicionado para realizar limpieza", cli4);
+        Llamada call9 = new Llamada(parseDate("2022-11-25 10:33:00"), null, "Quejas por mala atencion", cli1);
 
         // Asiganar llamadas a puestos (llamadas ya finalizadas)
         s1.asignarLlamada(p1, call1);
@@ -75,18 +76,18 @@ public class CargaDeDatos {
         s3.asignarLlamada(p4, call6);
         s4.asignarLlamada(p8, call7);
         s5.asignarLlamada(p9, call8);
+        s1.asignarLlamada(p1, call9);
 
         System.out.println("segundos " + call8.duracion());
-        
 
         FachadaSistema.getInstancia().agregarTrabajador(t1);
-        
+
     }
-    
+
     // FORMATO "2022-10-25 22:33:00" "yyyy-MM-dd HH:mm:ss"
     private static Date parseDate(String fecha) throws ParseException {
-            Date fechaParseada = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(fecha);
-            return fechaParseada;
-        }
+        Date fechaParseada = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(fecha);
+        return fechaParseada;
+    }
 
 }
