@@ -28,7 +28,7 @@ public class Login extends javax.swing.JDialog {
      */
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(parent);
         initComponents();
         setControlador(new LoginControlador(this));
     }

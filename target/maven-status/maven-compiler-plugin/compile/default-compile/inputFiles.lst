@@ -1,39 +1,25 @@
-<<<<<<< HEAD
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\com\mycompany\ObliDDA\iu\Login.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\com\mycompany\ObliDDA\domino\CostoLlamada.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\com\mycompany\ObliDDA\domino\Sector.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\controlador\LoginControlador.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\com\mycompany\ObliDDA\domino\Puesto.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\logica\ServicioTrabajador.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\com\mycompany\ObliDDA\iu\AtenderLlamada.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\com\mycompany\ObliDDA\iu\Inicio.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\logica\CargaDeDatos.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\com\mycompany\ObliDDA\domino\Llamada.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\com\mycompany\ObliDDA\domino\TrabajadorExcepcion.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\com\mycompany\ObliDDA\domino\Trabajador.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\logica\FachadaSistema.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\com\mycompany\ObliDDA\domino\Cliente.java
-C:\Users\MSI\Desktop\s\ObliDDA\mavenproject2\src\main\java\controlador\AtenderLlamadaControlador.java
-=======
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\domino\Cliente.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\domino\Puesto.java
+E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\iu\IniciarApp.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\iu\Inicio.java
-E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\logica\ServicioCliente.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\iu\Login.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\logica\ServicioSector.java
-E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\domino\Llamada.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\domino\Sector.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\controlador\RealizarLlamadaControlador.java
-E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\observer\Observable.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\iu\RealizarLlamada.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\domino\Trabajador.java
-E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\domino\CostoLlamada.java
-E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\logica\FachadaSistema.java
-E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\domino\ClienteExcepcion.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\domino\TrabajadorExcepcion.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\logica\CargaDeDatos.java
-E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\iu\AtenderLlamada.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\observer\Observer.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\modelo\ModeloRealizarLlamada.java
 E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\logica\ServicioTrabajador.java
->>>>>>> cfd1ce2 (un monton de cosas)
+E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\controlador\AtenderLlamadaControlador.java
+E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\controlador\LoginControlador.java
+E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\logica\ServicioCliente.java
+E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\domino\Llamada.java
+E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\observer\Observable.java
+E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\domino\CostoLlamada.java
+E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\logica\FachadaSistema.java
+E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\domino\ClienteExcepcion.java
+E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\com\mycompany\ObliDDA\iu\AtenderLlamada.java
+E:\Martin\Documents\ORT\4to semestre\DDA\ObligatorioDDA\src\main\java\modelo\modeloAtenderLlamada.java
