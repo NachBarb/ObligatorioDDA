@@ -1,20 +1,50 @@
-com\mycompany\ObliDDA\iu\Inicio$1.class
 logica\CargaDeDatos.class
-logica\ServicioTrabajador.class
 com\mycompany\ObliDDA\domino\TrabajadorExcepcion.class
 com\mycompany\ObliDDA\domino\Cliente.class
 com\mycompany\ObliDDA\domino\Puesto.class
+<<<<<<< HEAD
 com\mycompany\ObliDDA\domino\Trabajador.class
 controlador\AtenderLlamadaControlador.class
 controlador\LoginControlador.class
+=======
+com\mycompany\ObliDDA\iu\RealizarLlamada$5.class
+com\mycompany\ObliDDA\iu\RealizarLlamada$7.class
+>>>>>>> cfd1ce2 (un monton de cosas)
 com\mycompany\ObliDDA\iu\Inicio.class
 logica\FachadaSistema.class
 com\mycompany\ObliDDA\iu\Login$1.class
 com\mycompany\ObliDDA\iu\Login.class
+<<<<<<< HEAD
 com\mycompany\ObliDDA\iu\Inicio$4.class
 com\mycompany\ObliDDA\domino\Sector.class
+=======
+observer\Observer.class
+observer\Observable.class
+com\mycompany\ObliDDA\iu\RealizarLlamada.class
+logica\ServicioCliente.class
+>>>>>>> cfd1ce2 (un monton de cosas)
 com\mycompany\ObliDDA\domino\CostoLlamada.class
 com\mycompany\ObliDDA\domino\Llamada.class
 com\mycompany\ObliDDA\iu\Inicio$3.class
-com\mycompany\ObliDDA\iu\Inicio$2.class
+com\mycompany\ObliDDA\iu\RealizarLlamada$12.class
+com\mycompany\ObliDDA\iu\RealizarLlamada$2.class
 com\mycompany\ObliDDA\iu\AtenderLlamada.class
+com\mycompany\ObliDDA\iu\RealizarLlamada$10.class
+com\mycompany\ObliDDA\iu\Inicio$1.class
+logica\ServicioTrabajador.class
+controlador\RealizarLlamadaControlador.class
+observer\Observer$Eventos.class
+com\mycompany\ObliDDA\domino\Trabajador.class
+com\mycompany\ObliDDA\domino\ClienteExcepcion.class
+com\mycompany\ObliDDA\iu\RealizarLlamada$4.class
+com\mycompany\ObliDDA\iu\RealizarLlamada$8.class
+modelo\ModeloRealizarLlamada.class
+com\mycompany\ObliDDA\iu\RealizarLlamada$3.class
+com\mycompany\ObliDDA\iu\RealizarLlamada$9.class
+com\mycompany\ObliDDA\iu\Inicio$4.class
+com\mycompany\ObliDDA\domino\Sector.class
+logica\ServicioSector.class
+com\mycompany\ObliDDA\iu\RealizarLlamada$1.class
+com\mycompany\ObliDDA\iu\RealizarLlamada$11.class
+com\mycompany\ObliDDA\iu\Inicio$2.class
+com\mycompany\ObliDDA\iu\RealizarLlamada$6.class

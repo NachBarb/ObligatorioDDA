@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 public class Sector {
 
+
+    @Override
+    public String toString() {
+        return  numSector + "- " + nombre;
+    }
+    
     private String nombre;
     private int numSector;
     private int cantidadPuestos;

@@ -5,6 +5,7 @@
 package com.mycompany.ObliDDA.iu;
 
 import controlador.RealizarLlamadaControlador;
+import modelo.ModeloRealizarLlamada;
 
 /**
  *
@@ -12,26 +13,14 @@ import controlador.RealizarLlamadaControlador;
  */
 public class RealizarLlamada extends javax.swing.JDialog {
 
-    private boolean clienteLogueado;
-    private String cedula;
-
-    public String getCedula() {
-        return cedula;
-    }
-
     /**
      * Creates new form RealizarLlamada
      */
     public RealizarLlamada(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setControlador(new RealizarLlamadaControlador(this));
-        this.cedula = "";
+        this.setControlador(new RealizarLlamadaControlador(this, new ModeloRealizarLlamada()));
         mensajeEnPantalla("Ingrese su cedula");
-    }
-
-    private void setCedula(String cedula) {
-        this.cedula = cedula;
     }
 
     private RealizarLlamadaControlador controlador;
@@ -62,7 +51,7 @@ public class RealizarLlamada extends javax.swing.JDialog {
         bFinalizar = new javax.swing.JButton();
         bIniciar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        lSectores = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -162,7 +151,7 @@ public class RealizarLlamada extends javax.swing.JDialog {
             }
         });
 
-        jScrollPane3.setViewportView(jList2);
+        jScrollPane3.setViewportView(lSectores);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,47 +256,47 @@ public class RealizarLlamada extends javax.swing.JDialog {
     }//GEN-LAST:event_bIniciarActionPerformed
 
     private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
-       controlador.actualizarCedula("1");
+       controlador.digito("1");
     }//GEN-LAST:event_b1ActionPerformed
 
     private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
-       controlador.actualizarCedula("2");
+       controlador.digito("2");
     }//GEN-LAST:event_b2ActionPerformed
 
     private void b3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3ActionPerformed
-       controlador.actualizarCedula("3");
+       controlador.digito("3");
     }//GEN-LAST:event_b3ActionPerformed
 
     private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
-       controlador.actualizarCedula("4");
+       controlador.digito("4");
     }//GEN-LAST:event_b4ActionPerformed
 
     private void b5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b5ActionPerformed
-       controlador.actualizarCedula("5");
+       controlador.digito("5");
     }//GEN-LAST:event_b5ActionPerformed
 
     private void b6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b6ActionPerformed
-       controlador.actualizarCedula("6");
+       controlador.digito("6");
     }//GEN-LAST:event_b6ActionPerformed
 
     private void b7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b7ActionPerformed
-       controlador.actualizarCedula("7");
+       controlador.digito("7");
     }//GEN-LAST:event_b7ActionPerformed
 
     private void b8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b8ActionPerformed
-       controlador.actualizarCedula("8");
+       controlador.digito("8");
     }//GEN-LAST:event_b8ActionPerformed
 
     private void b9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b9ActionPerformed
-       controlador.actualizarCedula("9");
+       controlador.digito("9");
     }//GEN-LAST:event_b9ActionPerformed
 
     private void b0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b0ActionPerformed
-       controlador.actualizarCedula("0");
+       controlador.digito("0");
     }//GEN-LAST:event_b0ActionPerformed
 
     private void bHashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHashActionPerformed
-        controlador.loginCliente();
+        controlador.numeral();
     }//GEN-LAST:event_bHashActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -327,9 +316,9 @@ public class RealizarLlamada extends javax.swing.JDialog {
     private javax.swing.JButton bIniciar;
     private javax.swing.JButton bSalir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JList<String> lSectores;
     private javax.swing.JTextArea taMensajeCentral;
     // End of variables declaration//GEN-END:variables
 
@@ -337,11 +326,16 @@ public class RealizarLlamada extends javax.swing.JDialog {
         this.controlador = controlador;
     }
 
-    public void updateCedula(String caracter) {
-        setCedula(getCedula().concat(caracter));
-    }
-
     public void mensajeEnPantalla(String mensaje) {
         taMensajeCentral.append(mensaje);
     }
+    
+    public void limpiarPantalla(){
+        taMensajeCentral.setText("");
+    }
+    
+    public void cargarSectores(String[] listaSectores){
+        lSectores.setListData(listaSectores);
+    }
+    
 }
