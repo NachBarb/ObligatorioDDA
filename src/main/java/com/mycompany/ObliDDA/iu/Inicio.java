@@ -89,11 +89,9 @@ public class Inicio extends javax.swing.JFrame {
 
     private void bTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTrabajadorActionPerformed
 
-        Login dialogo = new Login(this, true);
-        Login dialogo2 = new Login(this, true);
-        dialogo.setVisible(true);
-        dialogo2.setVisible(true);
-        dispose();
+        new Login(this, true).setVisible(true);
+
+
     }//GEN-LAST:event_bTrabajadorActionPerformed
 
     private void bUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUsuarioActionPerformed

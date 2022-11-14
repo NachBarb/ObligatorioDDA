@@ -57,6 +57,7 @@ public class Sector {
             if (puestos.get(i).getTrabajador() == null) {
                 puesto = puestos.get(i);
                 puesto.setTrabajador(t);
+                t.setPuesto(puesto);
                 flag = true;
             }
         }
