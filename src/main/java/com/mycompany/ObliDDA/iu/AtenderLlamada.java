@@ -5,6 +5,8 @@
 package com.mycompany.ObliDDA.iu;
 
 import com.mycompany.ObliDDA.domino.Trabajador;
+import controlador.AtenderLlamadaControlador;
+
 import java.awt.Frame;
 
 /**
@@ -15,13 +17,19 @@ public class AtenderLlamada extends javax.swing.JDialog {
 
     private Trabajador trabajador;
 
+    private AtenderLlamadaControlador controlador;
+
+    public void setControlador(AtenderLlamadaControlador controlador) {
+        this.controlador = controlador;
+    }
+
     /**
      * Creates new form AtenderLlamada
      */
     public AtenderLlamada(java.awt.Frame parent, boolean modal, Trabajador trabajadorLogueado) {
         super(parent, modal);
         initComponents();
-
+        setControlador(new AtenderLlamadaControlador(this));
         trabajador = trabajadorLogueado;
         inicializar();
     }
@@ -54,6 +62,7 @@ public class AtenderLlamada extends javax.swing.JDialog {
         tDescripcion = new javax.swing.JTextArea();
         tFinalizarLlamada = new javax.swing.JButton();
         tSalir = new javax.swing.JButton();
+        tStatus = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -78,6 +87,11 @@ public class AtenderLlamada extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tDescripcion);
 
         tFinalizarLlamada.setText("Finalizar llamada");
+        tFinalizarLlamada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tFinalizarLlamadaActionPerformed(evt);
+            }
+        });
 
         tSalir.setText("Salir");
 
@@ -86,19 +100,8 @@ public class AtenderLlamada extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(210, 210, 210)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(64, 64, 64)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(74, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -130,13 +133,28 @@ public class AtenderLlamada extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tTiempoP, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                             .addComponent(tLlamada))
-                        .addGap(9, 9, 9))))
+                        .addGap(9, 9, 9))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tFinalizarLlamada)
-                .addGap(18, 18, 18)
-                .addComponent(tSalir)
-                .addGap(40, 40, 40))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(tFinalizarLlamada)
+                        .addGap(18, 18, 18)
+                        .addComponent(tSalir)
+                        .addGap(40, 40, 40))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(168, 168, 168))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(tStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,17 +188,20 @@ public class AtenderLlamada extends javax.swing.JDialog {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
                         .addComponent(tPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(41, 41, 41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(tStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(tCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addGap(37, 37, 37)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addGap(91, 91, 91)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tFinalizarLlamada)
                     .addComponent(tSalir))
@@ -189,6 +210,10 @@ public class AtenderLlamada extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tFinalizarLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFinalizarLlamadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tFinalizarLlamadaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,17 +236,25 @@ public class AtenderLlamada extends javax.swing.JDialog {
     private javax.swing.JTextField tPuesto;
     private javax.swing.JButton tSalir;
     private javax.swing.JTextField tSector;
+    private javax.swing.JTextField tStatus;
     private javax.swing.JTextField tTiempoP;
     private javax.swing.JTextField tTrabajadorNombre;
     // End of variables declaration//GEN-END:variables
 
     private void inicializar() {
         tTrabajadorNombre.setText(trabajador.getNombre());
-        tCliente.setText(trabajador.getPuesto().getLlamadaEnCurso().getCliente().getNombre());
+        if (trabajador.getPuesto().getLlamadaEnCurso() != null) {
+            tCliente.setText(trabajador.getPuesto().getLlamadaEnCurso().getCliente().getNombre());
+            tStatus.setText("Llamada en curso...");
+        } else {
+            tStatus.setText("No hay llamada en curso...");
+        }
+
         tSector.setText(trabajador.getSector().getNombre());
         tPuesto.setText(Integer.toString(trabajador.getPuesto().getNumeroPuesto()));
         tLlamada.setText(Integer.toString(trabajador.getPuesto().getCantidadLlamadas()));
         tTiempoP.setText(Integer.toString(trabajador.getPuesto().promedioTiempoLlamada()));
+
     }
 
 }

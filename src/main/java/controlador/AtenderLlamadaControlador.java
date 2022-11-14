@@ -21,4 +21,8 @@ public class AtenderLlamadaControlador {
     
     }
     
+//    public void finalizarLlamada (Llamada llamada){
+//    
+//    }
+    
 }

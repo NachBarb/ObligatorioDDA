@@ -52,13 +52,11 @@ public class Puesto {
         return cantidadLlamadas;
     }
 
-    public void agregarDescripcionLlamada(Llamada llamadaEnCurso, String descripcion) {
-        llamadaEnCurso.setDescripcion(descripcion);
-    }
-
-    public void finalizarLlamada(Llamada llamadaEnCurso) {
+  
+    public void finalizarLlamada(Llamada llamadaEnCurso, String descripcion) {
         if (llamadaEnCurso.getFin() == null) {
             llamadaEnCurso.setFin(new Date());
+            llamadaEnCurso.setDescripcion(descripcion);
             llamadas.add(llamadaEnCurso);
             llamadaEnCurso = null;
         }
