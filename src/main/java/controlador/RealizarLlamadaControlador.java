@@ -4,7 +4,11 @@
  */
 package controlador;
 
+import com.mycompany.ObliDDA.domino.Cliente;
+import com.mycompany.ObliDDA.domino.ClienteExcepcion;
 import com.mycompany.ObliDDA.iu.RealizarLlamada;
+import javax.swing.JOptionPane;
+import logica.FachadaSistema;
 
 /**
  *
@@ -17,8 +21,26 @@ public class RealizarLlamadaControlador {
         this.vista = vista;
     }
 
+    public void loginCliente(){
+    
+        String cedula = vista.getCedula();
+
+        try {
+            Cliente cliente = FachadaSistema.getInstancia().login(cedula);
+            this.vista.mensajeEnPantalla("Login exitoso");
+        } catch (ClienteExcepcion clienteExcepcion) {
+            JOptionPane.showMessageDialog(vista, clienteExcepcion.getMessage());
+        }
+
+    }
+    
+    
     public void iniciarLlamada(){
-    this.vista.mensajeDeInicio();
+    this.vista.mensajeEnPantalla("");
+    }
+    
+    public void actualizarCedula(String caracter){
+    this.vista.updateCedula(caracter);
     }
     
     

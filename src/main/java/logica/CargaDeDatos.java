@@ -81,7 +81,20 @@ public class CargaDeDatos {
         System.out.println("segundos " + call8.duracion());
 
         FachadaSistema.getInstancia().agregarTrabajador(t1);
+        FachadaSistema.getInstancia().agregarTrabajador(t2);
+        FachadaSistema.getInstancia().agregarTrabajador(t3);
+        FachadaSistema.getInstancia().agregarTrabajador(t4);
+        FachadaSistema.getInstancia().agregarTrabajador(t5);
+        FachadaSistema.getInstancia().agregarTrabajador(t6);
+        FachadaSistema.getInstancia().agregarTrabajador(t7);
+        FachadaSistema.getInstancia().agregarTrabajador(t8);
+        FachadaSistema.getInstancia().agregarTrabajador(t10);
 
+        FachadaSistema.getInstancia().agregarCliente(cli1);
+        FachadaSistema.getInstancia().agregarCliente(cli2);
+        FachadaSistema.getInstancia().agregarCliente(cli3);
+        FachadaSistema.getInstancia().agregarCliente(cli4);
+        FachadaSistema.getInstancia().agregarCliente(cli5);
     }
 
     // FORMATO "2022-10-25 22:33:00" "yyyy-MM-dd HH:mm:ss"

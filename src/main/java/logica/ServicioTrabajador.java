@@ -5,7 +5,13 @@ import com.mycompany.ObliDDA.domino.TrabajadorExcepcion;
 import java.util.HashMap;
 
 public class ServicioTrabajador {
-    private HashMap<String, Trabajador> trabajadores = new HashMap<>();
+    
+    
+    private HashMap<String, Trabajador> trabajadores;
+    
+    public ServicioTrabajador(){
+     this.trabajadores = new HashMap<>();
+    }
     
     private static final String CI_YO_CONTRASEÑA_INCORRECTA = "Cedula y/o contraseña incorrecta.";
 
