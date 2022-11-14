@@ -95,7 +95,8 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_bTrabajadorActionPerformed
 
     private void bUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUsuarioActionPerformed
-        // TODO add your handling code here:
+        RealizarLlamada dialogo = new RealizarLlamada(this, true);
+        dialogo.setVisible(true);
     }//GEN-LAST:event_bUsuarioActionPerformed
 
     private void bMonitoreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMonitoreoActionPerformed

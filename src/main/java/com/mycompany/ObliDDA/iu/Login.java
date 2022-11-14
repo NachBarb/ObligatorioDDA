@@ -123,7 +123,9 @@ public class Login extends javax.swing.JDialog {
         return tPass.getText();
     }
 
+
     public void ejecutarSiguienteCU(Trabajador trabajador) {
+
         AtenderLlamada all = new AtenderLlamada((java.awt.Frame) this.getParent(), true, trabajador);
         all.setVisible(true);
         dispose();
