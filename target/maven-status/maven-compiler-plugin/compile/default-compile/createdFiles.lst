@@ -5,12 +5,15 @@ com\mycompany\ObliDDA\domino\TrabajadorExcepcion.class
 com\mycompany\ObliDDA\domino\Cliente.class
 com\mycompany\ObliDDA\domino\Puesto.class
 com\mycompany\ObliDDA\domino\Trabajador.class
+controlador\AtenderLlamadaControlador.class
+controlador\LoginControlador.class
 com\mycompany\ObliDDA\iu\Inicio.class
 logica\FachadaSistema.class
 com\mycompany\ObliDDA\iu\Login$1.class
 com\mycompany\ObliDDA\iu\Login.class
 com\mycompany\ObliDDA\iu\Inicio$4.class
 com\mycompany\ObliDDA\domino\Sector.class
+com\mycompany\ObliDDA\domino\CostoLlamada.class
 com\mycompany\ObliDDA\domino\Llamada.class
 com\mycompany\ObliDDA\iu\Inicio$3.class
 com\mycompany\ObliDDA\iu\Inicio$2.class

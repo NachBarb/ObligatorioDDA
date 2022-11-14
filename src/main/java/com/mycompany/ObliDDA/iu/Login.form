@@ -35,12 +35,10 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="bOk" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="tCi" pref="100" max="32767" attributes="0"/>
-                      <Component id="tPass" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="tPass" pref="100" max="32767" attributes="0"/>
+                  <Component id="tCi" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="156" max="32767" attributes="0"/>
           </Group>
@@ -77,8 +75,6 @@
         <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tCi">
-    </Component>
     <Component class="javax.swing.JPasswordField" name="tPass">
     </Component>
     <Component class="javax.swing.JButton" name="bOk">
@@ -88,6 +84,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bOkActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tCi">
     </Component>
   </SubComponents>
 </Form>
