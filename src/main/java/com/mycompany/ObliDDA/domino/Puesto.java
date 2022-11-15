@@ -8,14 +8,12 @@ public class Puesto {
 
     private Sector sector;
     private Trabajador trabajador;
-    private int numeroPuesto;
     private Llamada llamadaEnCurso;
     private ArrayList<Llamada> llamadas = new ArrayList<>();
     private static int serial = 1;
     private int id;
 
     public Puesto(Sector sector) {
-        this.numeroPuesto = numeroPuesto;
         this.sector = sector;
         this.trabajador = null;
         this.llamadaEnCurso = null;
@@ -37,10 +35,6 @@ public class Puesto {
 
     public Trabajador getTrabajador() {
         return trabajador;
-    }
-
-    public int getNumeroPuesto() {
-        return numeroPuesto;
     }
 
     public Llamada getLlamadaEnCurso() {
