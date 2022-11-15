@@ -32,9 +32,9 @@ public class AtenderLlamada extends javax.swing.JDialog {
     public AtenderLlamada(java.awt.Frame parent, boolean modal, Trabajador trabajadorLogueado) {
         super(parent, modal);
         initComponents();
-        setControlador(new AtenderLlamadaControlador(this));
+        setControlador(new AtenderLlamadaControlador(this, trabajadorLogueado));
         trabajador = trabajadorLogueado;
-        inicializar();
+        controlador.inicializar(trabajadorLogueado.getPuesto());
     }
 
     /**
@@ -97,6 +97,11 @@ public class AtenderLlamada extends javax.swing.JDialog {
         });
 
         tSalir.setText("Salir");
+        tSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,11 +221,13 @@ public class AtenderLlamada extends javax.swing.JDialog {
 
     private void tFinalizarLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFinalizarLlamadaActionPerformed
         // TODO add your handling code here:
-        controlador.finalizarLlamada(trabajador.getPuesto(), tDescripcion.getText());       
-        this.dispose();
-
-
+        controlador.finalizarLlamada(trabajador.getPuesto(), tDescripcion.getText());
     }//GEN-LAST:event_tFinalizarLlamadaActionPerformed
+
+    private void tSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_tSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,20 +255,37 @@ public class AtenderLlamada extends javax.swing.JDialog {
     private javax.swing.JTextField tTrabajadorNombre;
     // End of variables declaration//GEN-END:variables
 
-    private void inicializar() {
-        tTrabajadorNombre.setText(trabajador.getNombre());
-        if (trabajador.getPuesto().getLlamadaEnCurso() != null) {
-            tCliente.setText(trabajador.getPuesto().getLlamadaEnCurso().getCliente().getNombre());
-            tStatus.setText("Llamada en curso...");
-        } else {
-            tStatus.setText("No hay llamada en curso...");
-        }
+    
+    public void setStatus(String status) {
+        tStatus.setText(status);
+    }
 
-        tSector.setText(trabajador.getSector().getNombre());
-        tPuesto.setText(Integer.toString(trabajador.getPuesto().getId()));
-        tLlamada.setText(Integer.toString(trabajador.getPuesto().getCantidadLlamadas()));
-        tTiempoP.setText(Integer.toString(trabajador.getPuesto().promedioTiempoLlamada()));
+    public void setDescripcion(String descripcion) {
+        tDescripcion.setText(descripcion);
+    }
 
+    public void setTiempoP(int tiempoP) {
+        tTiempoP.setText(Integer.toString(tiempoP));
+    }
+
+    public void setSector(String sector) {
+        tSector.setText(sector);
+    }
+
+    public void setPuesto(int puesto) {
+        tPuesto.setText(Integer.toString(puesto));
+    }
+
+    public void setLlamada(int llamada) {
+        tLlamada.setText(Integer.toString(llamada));
+    }
+
+    public void setTrabajadorNombre(String trabajador) {
+        tTrabajadorNombre.setText(trabajador);
+    }
+
+    public void setCliente(String cliente) {
+        tCliente.setText(cliente);
     }
 
 }
