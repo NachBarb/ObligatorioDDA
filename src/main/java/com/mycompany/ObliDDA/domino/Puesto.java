@@ -21,6 +21,10 @@ public class Puesto {
         this.id = serial++;
     }
 
+    public ArrayList<Llamada> getLlamadas() {
+        return llamadas;
+    }
+
     public int getId() {
         return id;
     }

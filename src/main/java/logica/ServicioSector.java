@@ -46,6 +46,24 @@ public class ServicioSector {
         Llamada call = new Llamada(cliente);
         
         return call;
-    }    
-
+    }
+    
+    public ArrayList<Llamada> listarLlamadasPorSector(Sector sector) {
+        ArrayList<Llamada> aux = new ArrayList<>();
+        aux = sector.listarLlamadas();
+        return aux;
+    }
+    
+    public ArrayList<Llamada> listarTodasLasLlamadas() {
+        ArrayList<Llamada> aux = new ArrayList<>();
+        ArrayList<Llamada> aux2 = new ArrayList<>();
+        for (Sector s: sectores) {
+            aux2 = s.listarLlamadas();
+            for (Llamada l: aux2) {
+                aux.add(l);
+            }
+        }
+        return aux;
+    }
+    
 }

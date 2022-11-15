@@ -39,8 +39,17 @@ public class Sector {
 
     public ArrayList<Puesto> getPuestos() {
         return puestos;
-    }
-
+    }   
+    
+    public ArrayList<Llamada> listarLlamadas(){
+        ArrayList<Llamada> aux = new ArrayList<>();
+        for (Puesto p: puestos) {
+            for (Llamada l: p.getLlamadas())
+                aux.add(l);
+        }
+        return aux;
+    } 
+    
     public boolean asignarPuestoASector(Puesto p) {
         boolean ok = false;
         int existePuesto = 0;
