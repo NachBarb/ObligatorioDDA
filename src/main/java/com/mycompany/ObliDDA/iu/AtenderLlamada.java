@@ -6,8 +6,7 @@ package com.mycompany.ObliDDA.iu;
 
 import com.mycompany.ObliDDA.domino.Trabajador;
 import controlador.AtenderLlamadaControlador;
-
-import java.awt.Frame;
+import javax.swing.JDialog;
 
 /**
  *
@@ -16,6 +15,10 @@ import java.awt.Frame;
 public class AtenderLlamada extends javax.swing.JDialog {
 
     private Trabajador trabajador;
+
+    public Trabajador getTrabajador() {
+        return trabajador;
+    }
 
     private AtenderLlamadaControlador controlador;
 
@@ -213,6 +216,10 @@ public class AtenderLlamada extends javax.swing.JDialog {
 
     private void tFinalizarLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFinalizarLlamadaActionPerformed
         // TODO add your handling code here:
+        controlador.finalizarLlamada(trabajador.getPuesto(), tDescripcion.getText());       
+        this.dispose();
+
+
     }//GEN-LAST:event_tFinalizarLlamadaActionPerformed
 
     /**
