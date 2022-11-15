@@ -10,9 +10,11 @@ import observer.Observer;
 public class Llamada extends Observable {
 
     private Date inicio;
+    private Date atencion; //
     private Date fin;
     private String descripcion;
     private Cliente cliente;
+    private Puesto puesto; //
     private static int serial = 1;
     private int id;
     
@@ -21,12 +23,14 @@ public class Llamada extends Observable {
         this.cliente = cliente;
         this.id = serial++;
     }
-
-    public Llamada(Date inicio, Date fin, String descripcion, Cliente cliente) {
+    
+    public Llamada(Date inicio, Date atencion, Date fin, String descripcion, Cliente cliente, Puesto puesto) {
         this.inicio = inicio;
+        this.atencion = atencion;
         this.fin = fin;
         this.descripcion = descripcion;
         this.cliente = cliente;
+        this.puesto = puesto;
         this.id = serial++;
     }
 
@@ -67,6 +71,22 @@ public class Llamada extends Observable {
         this.descripcion = descripcion;
     }
 
+    public Date getAtencion() {
+        return atencion;
+    }
+
+    public void setAtencion(Date atencion) {
+        this.atencion = atencion;
+    }
+
+    public Puesto getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(Puesto puesto) {
+        this.puesto = puesto;
+    }
+    
     public int duracion() {
         long delta = getFin().getTime() - getInicio().getTime();
         TimeUnit time = TimeUnit.SECONDS;
