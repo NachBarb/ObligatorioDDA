@@ -6,7 +6,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import observer.Observable;
 import observer.Observer;
 
-
 public class Llamada extends Observable {
 
     private Date inicio;
@@ -17,13 +16,13 @@ public class Llamada extends Observable {
     private Puesto puesto; //
     private static int serial = 1;
     private int id;
-    
+
     public Llamada(Cliente cliente) {
         this.inicio = new Date();
         this.cliente = cliente;
         this.id = serial++;
     }
-    
+
     public Llamada(Date inicio, Date atencion, Date fin, String descripcion, Cliente cliente, Puesto puesto) {
         this.inicio = inicio;
         this.atencion = atencion;
@@ -33,11 +32,10 @@ public class Llamada extends Observable {
         this.puesto = puesto;
         this.id = serial++;
     }
-   
+
     public int getId() {
         return id;
     }
-
 
     public Cliente getCliente() {
         return cliente;
@@ -86,7 +84,7 @@ public class Llamada extends Observable {
     public void setPuesto(Puesto puesto) {
         this.puesto = puesto;
     }
-    
+
     //Setear atencion cuando se atiende
     public int duracion() {
         long delta = getFin().getTime() - getAtencion().getTime();
@@ -98,6 +96,12 @@ public class Llamada extends Observable {
     public void finalizarLlamada() {
         setFin(new Date());
         notifyObservers(Observer.Eventos.LlamadaFinalizada);
+
+    }
+
+    @Override
+    public String toString() {
+        return this.descripcion + "- " + this.duracion();
     }
 
 }

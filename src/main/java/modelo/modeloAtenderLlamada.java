@@ -4,10 +4,22 @@
  */
 package modelo;
 
+import com.mycompany.ObliDDA.domino.Puesto;
+
 /**
  *
  * @author MSI
  */
 public class modeloAtenderLlamada {
-    
+
+    private Puesto puesto;
+
+    public Puesto getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(Puesto puesto) {
+        this.puesto = puesto;
+    }
+
 }
