@@ -2,6 +2,7 @@ package logica;
 
 import com.mycompany.ObliDDA.domino.Cliente;
 import com.mycompany.ObliDDA.domino.ClienteExcepcion;
+import com.mycompany.ObliDDA.domino.Llamada;
 import com.mycompany.ObliDDA.domino.Sector;
 import com.mycompany.ObliDDA.domino.SectorExcepcion;
 import com.mycompany.ObliDDA.domino.Trabajador;
@@ -47,14 +48,20 @@ public class FachadaSistema {
     public Cliente login(String ciCliente) throws ClienteExcepcion {
         return this.servicioCliente.loginCliente(ciCliente);
     }
-
-    public ArrayList<Sector> getSectores() {
-        return this.servicioSector.getSectores();
-    }
     
     public Sector buscarSector(int n) throws SectorExcepcion{
     return this.servicioSector.devolverSector(n);
     }
     
+    public ArrayList<Sector> listarSectores() {
+        return servicioSector.getSectores();
+    }
     
+    public ArrayList<Llamada> listarLlamadasPorSector(Sector sector) {
+        return servicioSector.listarLlamadasPorSector(sector);
+    }
+
+    public ArrayList<Llamada> listarTodasLasLlamadas() {
+        return servicioSector.listarTodasLasLlamadas();
+    }
 }

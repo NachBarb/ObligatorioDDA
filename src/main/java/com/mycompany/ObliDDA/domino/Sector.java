@@ -7,28 +7,30 @@ public class Sector {
 
     @Override
     public String toString() {
-        return  numSector + "- " + nombre;
+        return  id + "- " + nombre;
     }
     
     private String nombre;
-    private int numSector;
     private int cantidadPuestos;
     private ArrayList<Puesto> puestos = new ArrayList<>();
-
+    private static int serial = 1;
+    private int id;
+    
     private static final String PUESTOS_ASIGNADOS = "No hay puestos disponibles";
+    
+    public Sector(String nombre, int cantidadPuestos) {
 
-    public Sector(String nombre, int numSector, int cantidadPuestos) {
         this.nombre = nombre;
-        this.numSector = numSector;
         this.cantidadPuestos = cantidadPuestos;
+        this.id = serial++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNombre() {
         return nombre;
-    }
-
-    public int getNumSector() {
-        return numSector;
     }
 
     public int getCantidadPuestos() {
@@ -37,15 +39,24 @@ public class Sector {
 
     public ArrayList<Puesto> getPuestos() {
         return puestos;
-    }
-
+    }   
+    
+    public ArrayList<Llamada> listarLlamadas(){
+        ArrayList<Llamada> aux = new ArrayList<>();
+        for (Puesto p: puestos) {
+            for (Llamada l: p.getLlamadas())
+                aux.add(l);
+        }
+        return aux;
+    } 
+    
     public boolean asignarPuestoASector(Puesto p) {
         boolean ok = false;
         int existePuesto = 0;
         if (puestos.size() < cantidadPuestos) {
             for (int i = 0; i < puestos.size(); i++) {
-                if (puestos.get(i).getNumeroPuesto() == p.getNumeroPuesto()) {
-                    existePuesto++;
+                if (puestos.get(i).getId() == p.getId()) {
+                    existePuesto ++;
                 }
             }
             if (existePuesto == 0) {
@@ -72,22 +83,24 @@ public class Sector {
         }
         return puesto;
     }
-          
-    public Puesto asignarLlamada(Cliente cliente) {
+    
+    public Puesto asignarLlamada(Llamada call) {
         Puesto puesto = null;
-        Llamada call = null;
         boolean flag = false;
         for (int i = 0; i < puestos.size() && !flag; i++) {
-           if (puestos.get(i).getLlamadaEnCurso() == null) {
-               call = new Llamada(cliente);
-               puesto = puestos.get(i);
-               puesto.setLlamadaEnCurso(call);
-               flag = true;
-           } 
-        } //IF PARA EN ESPERA
+            if (puestos.get(i).getLlamadaEnCurso() == null) {
+                puesto = puestos.get(i);
+                call.setPuesto(puesto);
+                puesto.setLlamadaEnCurso(call);
+                flag = true;
+            }
+        } 
+        // IF PARA EN ESPERA        
+        
         return puesto;
-    }
-
+    }    
+    
+    //Metodo para la precarga
     public void asignarLlamada(Puesto puesto, Llamada call) {
         puesto.agregarLlamada(call);
     }

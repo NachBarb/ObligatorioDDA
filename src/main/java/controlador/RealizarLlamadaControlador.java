@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 
-import com.mycompany.ObliDDA.domino.Cliente;
 import com.mycompany.ObliDDA.domino.ClienteExcepcion;
 import com.mycompany.ObliDDA.domino.Sector;
 import com.mycompany.ObliDDA.domino.SectorExcepcion;
@@ -66,7 +61,7 @@ public class RealizarLlamadaControlador implements Observer {
     }
 
     public void cargarSectores() {
-        ArrayList<Sector> sectores = FachadaSistema.getInstancia().getSectores();
+        ArrayList<Sector> sectores = FachadaSistema.getInstancia().listarSectores();
         String[] array = new String[sectores.size()];
         int index = 0;
         for (Object value : sectores) {

@@ -33,10 +33,5 @@ public class ServicioTrabajador {
             throw new TrabajadorExcepcion(CI_YO_CONTRASEÑA_INCORRECTA);
         }
         return t;
-    }
-    
-    
-    
-    
-    
+    }    
 }

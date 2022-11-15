@@ -8,16 +8,25 @@ public class Puesto {
 
     private Sector sector;
     private Trabajador trabajador;
-    private int numeroPuesto;
     private Llamada llamadaEnCurso;
-    private ArrayList<Llamada> llamadas;
+    private ArrayList<Llamada> llamadas = new ArrayList<>();
+    private static int serial = 1;
+    private int id;
 
-    public Puesto(int numeroPuesto, Sector sector) {
-        this.numeroPuesto = numeroPuesto;
+    public Puesto(Sector sector) {
         this.sector = sector;
         this.trabajador = null;
         this.llamadaEnCurso = null;
         this.llamadas = new ArrayList<>();
+        this.id = serial++;
+    }
+
+    public ArrayList<Llamada> getLlamadas() {
+        return llamadas;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Sector getSector() {
@@ -30,10 +39,6 @@ public class Puesto {
 
     public Trabajador getTrabajador() {
         return trabajador;
-    }
-
-    public int getNumeroPuesto() {
-        return numeroPuesto;
     }
 
     public Llamada getLlamadaEnCurso() {

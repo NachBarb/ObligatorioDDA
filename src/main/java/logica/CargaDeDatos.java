@@ -1,14 +1,14 @@
 package logica;
 
 import com.mycompany.ObliDDA.domino.*;
+import controlador.ControllerMonitoreo;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CargaDeDatos {
-
-    public static void cargar() throws ParseException {
-
+    public static void cargar() throws ParseException {       
+        
         // Carga CLIENTES
         Cliente cli1 = new Cliente("Ignacio Barbisan", "12345678");
         Cliente cli2 = new Cliente("Martin Bove", "87654321");
@@ -17,11 +17,18 @@ public class CargaDeDatos {
         Cliente cli5 = new Cliente("Carolina Perez", "73625196", 650);
 
         // Carga SECTORES 
-        Sector s1 = new Sector("RRHH", 1, 1);
-        Sector s2 = new Sector("Marketing", 2, 2);
-        Sector s3 = new Sector("Administracion", 3, 2);
-        Sector s4 = new Sector("Soporte", 4, 3);
-        Sector s5 = new Sector("Mantenimiento", 5, 1);
+        Sector s1 = new Sector("RRHH", 1);
+        Sector s2 = new Sector("Marketing", 2);
+        Sector s3 = new Sector("Administracion", 2);
+        Sector s4 = new Sector("Soporte", 3);
+        Sector s5 = new Sector("Mantenimiento", 1);     
+
+        //Insertar Sectores a ServicioSector
+        FachadaSistema.getInstancia().agregarSector(s1);
+        FachadaSistema.getInstancia().agregarSector(s2);
+        FachadaSistema.getInstancia().agregarSector(s3);
+        FachadaSistema.getInstancia().agregarSector(s4);
+        FachadaSistema.getInstancia().agregarSector(s5);
 
         // Carga TRABAJADORES
         Trabajador t1 = new Trabajador("Damian Martinez", "11111111", "Password1", s1);
@@ -35,16 +42,16 @@ public class CargaDeDatos {
         Trabajador t10 = new Trabajador("Clarisa Martinez", "10345678", "Password1", s5);
 
         // Carga PUESTOS
-        Puesto p1 = new Puesto(1, s1);
-        Puesto p2 = new Puesto(2, s2);
-        Puesto p3 = new Puesto(3, s2);
-        Puesto p4 = new Puesto(4, s3);
-        Puesto p5 = new Puesto(5, s3);
-        Puesto p6 = new Puesto(6, s4);
-        Puesto p7 = new Puesto(7, s4);
-        Puesto p8 = new Puesto(8, s4);
-        Puesto p9 = new Puesto(9, s5);
-
+        Puesto p1 = new Puesto(s1);
+        Puesto p2 = new Puesto(s2);
+        Puesto p3 = new Puesto(s2);
+        Puesto p4 = new Puesto(s3);
+        Puesto p5 = new Puesto(s3);
+        Puesto p6 = new Puesto(s4);
+        Puesto p7 = new Puesto(s4);
+        Puesto p8 = new Puesto(s4);
+        Puesto p9 = new Puesto(s5);
+        
         // Asignar lista de puestos a sector
         s1.asignarPuestoASector(p1);
         s2.asignarPuestoASector(p2);
@@ -57,26 +64,35 @@ public class CargaDeDatos {
         s5.asignarPuestoASector(p9);
 
         // Carga LLAMADAS
+        Llamada call1 = new Llamada(parseDate("2022-06-25 10:33:00"), parseDate("2022-06-25 10:34:00"), parseDate("2022-06-25 10:37:00"), "Pedido de licencia", cli1, p1);
+        Llamada call2 = new Llamada(parseDate("2022-07-05 11:23:00"), parseDate("2022-07-05 11:27:00"), parseDate("2022-07-05 11:40:00"), "Nuevo anuncio publicitario", cli2, p2);
+        Llamada call3 = new Llamada(parseDate("2022-07-20 11:05:00"), parseDate("2022-07-20 11:07:00"), parseDate("2022-07-20 11:17:00"), "Informe de publicidad", cli3, p3);
+        Llamada call4 = new Llamada(parseDate("2022-08-15 12:33:00"), parseDate("2022-08-15 12:38:00"), parseDate("2022-08-15 12:47:00"), "Certificacion por enfermedad", cli4, p1);
+        Llamada call5 = new Llamada(parseDate("2022-09-02 10:27:00"), parseDate("2022-09-02 10:28:00"), parseDate("2022-09-02 10:37:00"), "Coordinacion de reunion", cli5, p4);
+        Llamada call6 = new Llamada(parseDate("2022-10-01 13:04:00"), parseDate("2022-10-01 13:08:00"), parseDate("2022-10-01 13:27:00"), "Solicitud de constancia", cli2, p4);
+        Llamada call7 = new Llamada(parseDate("2022-10-13 13:33:00"), parseDate("2022-10-13 13:35:00"), parseDate("2022-10-13 13:57:00"), "Conexion de internet inestable", cli2, p8);
+        Llamada call8 = new Llamada(parseDate("2022-10-25 14:12:00"), parseDate("2022-10-25 14:15:00"), parseDate("2022-10-25 14:37:00"), "Aire acondicionado para realizar limpieza", cli4, p9);
 
-//        Llamada call1 = new Llamada(parseDate("2022-06-25 10:33:00"), parseDate("2022-06-25 10:37:00"), "Pedido de licencia", cli1);
-//        Llamada call2 = new Llamada(parseDate("2022-07-05 11:23:00"), parseDate("2022-07-05 11:40:00"), "Nuevo anuncio publicitario", cli2);
-//        Llamada call3 = new Llamada(parseDate("2022-07-20 11:05:00"), parseDate("2022-07-20 11:17:00"), "Informe de publicidad", cli3);
-//        Llamada call4 = new Llamada(parseDate("2022-08-15 12:33:00"), parseDate("2022-08-15 12:47:00"), "Certificacion por enfermedad", cli4);
-//        Llamada call5 = new Llamada(parseDate("2022-09-02 10:27:00"), parseDate("2022-09-02 10:37:00"), "Coordinacion de reunion", cli5);
-//        Llamada call6 = new Llamada(parseDate("2022-10-01 13:04:00"), parseDate("2022-10-01 13:27:00"), "Solicitud de constancia", cli2);
-//        Llamada call7 = new Llamada(parseDate("2022-10-13 13:33:00"), parseDate("2022-10-13 13:57:00"), "Conexion de internet inestable", cli2);
-//        Llamada call8 = new Llamada(parseDate("2022-10-25 14:12:00"), parseDate("2022-10-25 14:37:00"), "Aire acondicionado para realizar limpieza", cli4);
-//
-//         Asiganar llamadas a puestos (llamadas ya finalizadas)
-//        s1.asignarLlamada(p1, call1);
-//        s2.asignarLlamada(p2, call2);
-//        s2.asignarLlamada(p3, call3);
-//        s1.asignarLlamada(p1, call4);
-//        s3.asignarLlamada(p4, call5);
-//        s3.asignarLlamada(p4, call6);
-//        s4.asignarLlamada(p8, call7);
-//        s5.asignarLlamada(p9, call8);
 
+        //Asiganar llamadas a puestos (llamadas ya finalizadas)
+        s1.asignarLlamada(p1, call1);
+        s2.asignarLlamada(p2, call2);
+        s2.asignarLlamada(p3, call3);
+        s1.asignarLlamada(p1, call4);
+        s3.asignarLlamada(p4, call5);
+        s3.asignarLlamada(p4, call6);
+        s4.asignarLlamada(p8, call7);
+        s5.asignarLlamada(p9, call8);
+
+        System.out.println("call1 " + call1.getId());
+        System.out.println("call2 " + call2.getId());
+        System.out.println("call3 " + call3.getId());
+        System.out.println("call4 " + call4.getId());
+        
+        System.out.println("p1 " + p1.getId());
+        System.out.println("p2 " + p2.getId());
+        System.out.println("p3 " + p3.getId());
+        System.out.println("p4 " + p4.getId());
 
         FachadaSistema.getInstancia().agregarTrabajador(t1);
         FachadaSistema.getInstancia().agregarTrabajador(t2);
@@ -94,15 +110,10 @@ public class CargaDeDatos {
         FachadaSistema.getInstancia().agregarCliente(cli4);
         FachadaSistema.getInstancia().agregarCliente(cli5);
 
-        
-        FachadaSistema.getInstancia().agregarSector(s1);
-        FachadaSistema.getInstancia().agregarSector(s2);
-        FachadaSistema.getInstancia().agregarSector(s3);
-        FachadaSistema.getInstancia().agregarSector(s4);
-        FachadaSistema.getInstancia().agregarSector(s5);
-        
-
-
+        ControllerMonitoreo controllerMonitoreo = new ControllerMonitoreo();
+        System.out.println("Prueba mostrar sectores " + controllerMonitoreo.listarSectores());
+        System.out.println("Prueba mostrar llamadas " + controllerMonitoreo.listarLlamadasPorSector(s2));
+        System.out.println("Prueba mostrar llamadas " + controllerMonitoreo.listarTodasLasLlamadas());
     }
 
     // FORMATO "2022-10-25 22:33:00" "yyyy-MM-dd HH:mm:ss"
