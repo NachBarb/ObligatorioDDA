@@ -7,6 +7,7 @@ package controlador;
 import com.mycompany.ObliDDA.domino.Cliente;
 import com.mycompany.ObliDDA.domino.ClienteExcepcion;
 import com.mycompany.ObliDDA.domino.Sector;
+import com.mycompany.ObliDDA.domino.SectorExcepcion;
 import com.mycompany.ObliDDA.iu.RealizarLlamada;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -35,7 +36,14 @@ public class RealizarLlamadaControlador implements Observer {
     if(modelo.getCliente()==null){
     loginCliente();
     }else{
-    //TODO IMPLEMENTAR ASIGNACION DE LLAMADA A SECTOR
+        try{
+                FachadaSistema.getInstancia().buscarSector(Integer.parseInt(modelo.getNumSector()));
+        }catch(SectorExcepcion sectorExcepcion){
+        JOptionPane.showMessageDialog(vista, sectorExcepcion.getMessage());
+        this.modelo.setNumSector("");
+        }
+        
+
     }
     }
     
@@ -47,7 +55,6 @@ public class RealizarLlamadaControlador implements Observer {
         try {
             modelo.setCliente(FachadaSistema.getInstancia().login(cedula));
             this.vista.limpiarPantalla();
-            this.vista.mensajeEnPantalla("Login exitoso");
             this.vista.mensajeEnPantalla("Para comunicarse con un sector digite su identificador seguido de la tecla numeral");
 
             cargarSectores();
@@ -85,7 +92,7 @@ public class RealizarLlamadaControlador implements Observer {
 
     @Override
     public void update(Observable source, Object event) {
-        if (event.equals(Observer.Eventos.LlamadaFinalizada)) {
+        if (event.equals(Observer.Eventos.LlamadaIniciada)) {
             vista.mensajeEnPantalla(modelo.mensajeInicioDeLlamada());
         }
     }

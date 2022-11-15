@@ -83,11 +83,11 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTrabajadorActionPerformed
-        new Login(this, true).setVisible(true);
+        new Login(this, false).setVisible(true);
     }//GEN-LAST:event_bTrabajadorActionPerformed
 
     private void bUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUsuarioActionPerformed
-        RealizarLlamada dialogo = new RealizarLlamada(this, true);
+        RealizarLlamada dialogo = new RealizarLlamada(this, false);
         dialogo.setVisible(true);
     }//GEN-LAST:event_bUsuarioActionPerformed
 

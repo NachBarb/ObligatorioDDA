@@ -3,6 +3,7 @@ package logica;
 import com.mycompany.ObliDDA.domino.Cliente;
 import com.mycompany.ObliDDA.domino.ClienteExcepcion;
 import com.mycompany.ObliDDA.domino.Sector;
+import com.mycompany.ObliDDA.domino.SectorExcepcion;
 import com.mycompany.ObliDDA.domino.Trabajador;
 import com.mycompany.ObliDDA.domino.TrabajadorExcepcion;
 import java.util.ArrayList;
@@ -50,4 +51,10 @@ public class FachadaSistema {
     public ArrayList<Sector> getSectores() {
         return this.servicioSector.getSectores();
     }
+    
+    public Sector buscarSector(int n) throws SectorExcepcion{
+    return this.servicioSector.devolverSector(n);
+    }
+    
+    
 }
