@@ -9,17 +9,17 @@ import observer.Observer;
 
 public class Llamada extends Observable {
 
-    private static AtomicInteger count = new AtomicInteger(0);
-    private int numeroDeLlamada;
     private Date inicio;
     private Date fin;
     private String descripcion;
     private Cliente cliente;
-
-
+    private static int serial = 1;
+    private int id;
+    
     public Llamada(Cliente cliente) {
         this.inicio = new Date();
         this.cliente = cliente;
+        this.id = serial++;
     }
 
     public Llamada(Date inicio, Date fin, String descripcion, Cliente cliente) {
@@ -27,8 +27,11 @@ public class Llamada extends Observable {
         this.fin = fin;
         this.descripcion = descripcion;
         this.cliente = cliente;
-        this.numeroDeLlamada = count.incrementAndGet();
+        this.id = serial++;
+    }
 
+    public int getId() {
+        return id;
     }
 
 

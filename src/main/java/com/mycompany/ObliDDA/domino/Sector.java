@@ -44,8 +44,8 @@ public class Sector {
         int existePuesto = 0;
         if (puestos.size() < cantidadPuestos) {
             for (int i = 0; i < puestos.size(); i++) {
-                if (puestos.get(i).getNumeroPuesto() == p.getNumeroPuesto()) {
-                    existePuesto++;
+                if (puestos.get(i).getId() == p.getId()) {
+                    existePuesto ++;
                 }
             }
             if (existePuesto == 0) {

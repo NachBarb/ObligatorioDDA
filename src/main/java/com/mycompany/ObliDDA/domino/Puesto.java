@@ -10,14 +10,21 @@ public class Puesto {
     private Trabajador trabajador;
     private int numeroPuesto;
     private Llamada llamadaEnCurso;
-    private ArrayList<Llamada> llamadas;
+    private ArrayList<Llamada> llamadas = new ArrayList<>();
+    private static int serial = 1;
+    private int id;
 
-    public Puesto(int numeroPuesto, Sector sector) {
+    public Puesto(Sector sector) {
         this.numeroPuesto = numeroPuesto;
         this.sector = sector;
         this.trabajador = null;
         this.llamadaEnCurso = null;
         this.llamadas = new ArrayList<>();
+        this.id = serial++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Sector getSector() {

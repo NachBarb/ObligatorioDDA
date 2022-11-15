@@ -35,16 +35,16 @@ public class CargaDeDatos {
         Trabajador t10 = new Trabajador("Clarisa Martinez", "10345678", "Password1", s5);
 
         // Carga PUESTOS
-        Puesto p1 = new Puesto(1, s1);
-        Puesto p2 = new Puesto(2, s2);
-        Puesto p3 = new Puesto(3, s2);
-        Puesto p4 = new Puesto(4, s3);
-        Puesto p5 = new Puesto(5, s3);
-        Puesto p6 = new Puesto(6, s4);
-        Puesto p7 = new Puesto(7, s4);
-        Puesto p8 = new Puesto(8, s4);
-        Puesto p9 = new Puesto(9, s5);
-
+        Puesto p1 = new Puesto(s1);
+        Puesto p2 = new Puesto(s2);
+        Puesto p3 = new Puesto(s2);
+        Puesto p4 = new Puesto(s3);
+        Puesto p5 = new Puesto(s3);
+        Puesto p6 = new Puesto(s4);
+        Puesto p7 = new Puesto(s4);
+        Puesto p8 = new Puesto(s4);
+        Puesto p9 = new Puesto(s5);
+        
         // Asignar lista de puestos a sector
         s1.asignarPuestoASector(p1);
         s2.asignarPuestoASector(p2);
@@ -58,25 +58,34 @@ public class CargaDeDatos {
 
         // Carga LLAMADAS
 
-//        Llamada call1 = new Llamada(parseDate("2022-06-25 10:33:00"), parseDate("2022-06-25 10:37:00"), "Pedido de licencia", cli1);
-//        Llamada call2 = new Llamada(parseDate("2022-07-05 11:23:00"), parseDate("2022-07-05 11:40:00"), "Nuevo anuncio publicitario", cli2);
-//        Llamada call3 = new Llamada(parseDate("2022-07-20 11:05:00"), parseDate("2022-07-20 11:17:00"), "Informe de publicidad", cli3);
-//        Llamada call4 = new Llamada(parseDate("2022-08-15 12:33:00"), parseDate("2022-08-15 12:47:00"), "Certificacion por enfermedad", cli4);
-//        Llamada call5 = new Llamada(parseDate("2022-09-02 10:27:00"), parseDate("2022-09-02 10:37:00"), "Coordinacion de reunion", cli5);
-//        Llamada call6 = new Llamada(parseDate("2022-10-01 13:04:00"), parseDate("2022-10-01 13:27:00"), "Solicitud de constancia", cli2);
-//        Llamada call7 = new Llamada(parseDate("2022-10-13 13:33:00"), parseDate("2022-10-13 13:57:00"), "Conexion de internet inestable", cli2);
-//        Llamada call8 = new Llamada(parseDate("2022-10-25 14:12:00"), parseDate("2022-10-25 14:37:00"), "Aire acondicionado para realizar limpieza", cli4);
-//
-//         Asiganar llamadas a puestos (llamadas ya finalizadas)
-//        s1.asignarLlamada(p1, call1);
-//        s2.asignarLlamada(p2, call2);
-//        s2.asignarLlamada(p3, call3);
-//        s1.asignarLlamada(p1, call4);
-//        s3.asignarLlamada(p4, call5);
-//        s3.asignarLlamada(p4, call6);
-//        s4.asignarLlamada(p8, call7);
-//        s5.asignarLlamada(p9, call8);
+        Llamada call1 = new Llamada(parseDate("2022-06-25 10:33:00"), parseDate("2022-06-25 10:37:00"), "Pedido de licencia", cli1);
+        Llamada call2 = new Llamada(parseDate("2022-07-05 11:23:00"), parseDate("2022-07-05 11:40:00"), "Nuevo anuncio publicitario", cli2);
+        Llamada call3 = new Llamada(parseDate("2022-07-20 11:05:00"), parseDate("2022-07-20 11:17:00"), "Informe de publicidad", cli3);
+        Llamada call4 = new Llamada(parseDate("2022-08-15 12:33:00"), parseDate("2022-08-15 12:47:00"), "Certificacion por enfermedad", cli4);
+        Llamada call5 = new Llamada(parseDate("2022-09-02 10:27:00"), parseDate("2022-09-02 10:37:00"), "Coordinacion de reunion", cli5);
+        Llamada call6 = new Llamada(parseDate("2022-10-01 13:04:00"), parseDate("2022-10-01 13:27:00"), "Solicitud de constancia", cli2);
+        Llamada call7 = new Llamada(parseDate("2022-10-13 13:33:00"), parseDate("2022-10-13 13:57:00"), "Conexion de internet inestable", cli2);
+        Llamada call8 = new Llamada(parseDate("2022-10-25 14:12:00"), parseDate("2022-10-25 14:37:00"), "Aire acondicionado para realizar limpieza", cli4);
 
+        //Asiganar llamadas a puestos (llamadas ya finalizadas)
+        s1.asignarLlamada(p1, call1);
+        s2.asignarLlamada(p2, call2);
+        s2.asignarLlamada(p3, call3);
+        s1.asignarLlamada(p1, call4);
+        s3.asignarLlamada(p4, call5);
+        s3.asignarLlamada(p4, call6);
+        s4.asignarLlamada(p8, call7);
+        s5.asignarLlamada(p9, call8);
+
+        System.out.println("call1 " + call1.getId());
+        System.out.println("call2 " + call2.getId());
+        System.out.println("call3 " + call3.getId());
+        System.out.println("call4 " + call4.getId());
+        
+        System.out.println("p1 " + p1.getId());
+        System.out.println("p2 " + p2.getId());
+        System.out.println("p3 " + p3.getId());
+        System.out.println("p4 " + p4.getId());
 
         FachadaSistema.getInstancia().agregarTrabajador(t1);
         FachadaSistema.getInstancia().agregarTrabajador(t2);
