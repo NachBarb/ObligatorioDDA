@@ -33,7 +33,7 @@ public class Llamada extends Observable {
         this.puesto = puesto;
         this.id = serial++;
     }
-
+   
     public int getId() {
         return id;
     }

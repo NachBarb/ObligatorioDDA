@@ -1,6 +1,7 @@
 package logica;
 
 import com.mycompany.ObliDDA.domino.*;
+import controlador.ControllerMonitoreo;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,8 +21,7 @@ public class CargaDeDatos {
         Sector s2 = new Sector("Marketing", 2);
         Sector s3 = new Sector("Administracion", 2);
         Sector s4 = new Sector("Soporte", 3);
-        Sector s5 = new Sector("Mantenimiento", 1);
-        
+        Sector s5 = new Sector("Mantenimiento", 1);     
 
         //Insertar Sectores a ServicioSector
         FachadaSistema.getInstancia().agregarSector(s1);
@@ -29,7 +29,7 @@ public class CargaDeDatos {
         FachadaSistema.getInstancia().agregarSector(s3);
         FachadaSistema.getInstancia().agregarSector(s4);
         FachadaSistema.getInstancia().agregarSector(s5);
-        
+
         // Carga TRABAJADORES
         Trabajador t1 = new Trabajador("Damian Martinez", "11111111", "Password1", s1);
         Trabajador t2 = new Trabajador("Facundo Amoroso", "22222222", "Password1", s2);
@@ -73,6 +73,7 @@ public class CargaDeDatos {
         Llamada call7 = new Llamada(parseDate("2022-10-13 13:33:00"), parseDate("2022-10-13 13:35:00"), parseDate("2022-10-13 13:57:00"), "Conexion de internet inestable", cli2, p8);
         Llamada call8 = new Llamada(parseDate("2022-10-25 14:12:00"), parseDate("2022-10-25 14:15:00"), parseDate("2022-10-25 14:37:00"), "Aire acondicionado para realizar limpieza", cli4, p9);
 
+
         //Asiganar llamadas a puestos (llamadas ya finalizadas)
         s1.asignarLlamada(p1, call1);
         s2.asignarLlamada(p2, call2);
@@ -108,6 +109,11 @@ public class CargaDeDatos {
         FachadaSistema.getInstancia().agregarCliente(cli3);
         FachadaSistema.getInstancia().agregarCliente(cli4);
         FachadaSistema.getInstancia().agregarCliente(cli5);
+
+        ControllerMonitoreo controllerMonitoreo = new ControllerMonitoreo();
+        System.out.println("Prueba mostrar sectores " + controllerMonitoreo.listarSectores());
+        System.out.println("Prueba mostrar llamadas " + controllerMonitoreo.listarLlamadasPorSector(s2));
+        System.out.println("Prueba mostrar llamadas " + controllerMonitoreo.listarTodasLasLlamadas());
     }
 
     // FORMATO "2022-10-25 22:33:00" "yyyy-MM-dd HH:mm:ss"
