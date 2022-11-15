@@ -1,5 +1,6 @@
 package logica;
 
+
 import com.mycompany.ObliDDA.domino.Cliente;
 import com.mycompany.ObliDDA.domino.ClienteExcepcion;
 import com.mycompany.ObliDDA.domino.Sector;

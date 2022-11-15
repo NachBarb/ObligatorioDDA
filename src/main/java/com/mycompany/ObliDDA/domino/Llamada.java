@@ -87,8 +87,9 @@ public class Llamada extends Observable {
         this.puesto = puesto;
     }
     
+    //Setear atencion cuando se atiende
     public int duracion() {
-        long delta = getFin().getTime() - getInicio().getTime();
+        long delta = getFin().getTime() - getAtencion().getTime();
         TimeUnit time = TimeUnit.SECONDS;
         int result = (int) time.convert(delta, TimeUnit.MILLISECONDS);
         return result;

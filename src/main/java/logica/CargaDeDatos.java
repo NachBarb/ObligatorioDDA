@@ -6,9 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CargaDeDatos {
-
-    public static void cargar() throws ParseException {
-
+    public static void cargar() throws ParseException {       
+        
         // Carga CLIENTES
         Cliente cli1 = new Cliente("Ignacio Barbisan", "12345678");
         Cliente cli2 = new Cliente("Martin Bove", "87654321");
@@ -23,6 +22,7 @@ public class CargaDeDatos {
         Sector s4 = new Sector("Soporte", 3);
         Sector s5 = new Sector("Mantenimiento", 1);
         
+
         //Insertar Sectores a ServicioSector
         FachadaSistema.getInstancia().agregarSector(s1);
         FachadaSistema.getInstancia().agregarSector(s2);
