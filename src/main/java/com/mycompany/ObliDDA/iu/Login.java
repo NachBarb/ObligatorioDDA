@@ -28,7 +28,7 @@ public class Login extends javax.swing.JDialog {
      */
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(parent);
         initComponents();
         setControlador(new LoginControlador(this));
     }
@@ -123,7 +123,9 @@ public class Login extends javax.swing.JDialog {
         return tPass.getText();
     }
 
+
     public void ejecutarSiguienteCU(Trabajador trabajador) {
+
         AtenderLlamada all = new AtenderLlamada((java.awt.Frame) this.getParent(), true, trabajador);
         all.setVisible(true);
         dispose();

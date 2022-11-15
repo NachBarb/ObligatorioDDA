@@ -57,30 +57,51 @@ public class CargaDeDatos {
         s5.asignarPuestoASector(p9);
 
         // Carga LLAMADAS
-        Llamada call1 = new Llamada(parseDate("2022-06-25 10:33:00"), parseDate("2022-06-25 10:37:00"), "Pedido de licencia", cli1);
-        Llamada call2 = new Llamada(parseDate("2022-07-05 11:23:00"), parseDate("2022-07-05 11:40:00"), "Nuevo anuncio publicitario", cli2);
-        Llamada call3 = new Llamada(parseDate("2022-07-20 11:05:00"), parseDate("2022-07-20 11:17:00"), "Informe de publicidad", cli3);
-        Llamada call4 = new Llamada(parseDate("2022-08-15 12:33:00"), parseDate("2022-08-15 12:47:00"), "Certificacion por enfermedad", cli4);
-        Llamada call5 = new Llamada(parseDate("2022-09-02 10:27:00"), parseDate("2022-09-02 10:37:00"), "Coordinacion de reunion", cli5);
-        Llamada call6 = new Llamada(parseDate("2022-10-01 13:04:00"), parseDate("2022-10-01 13:27:00"), "Solicitud de constancia", cli2);
-        Llamada call7 = new Llamada(parseDate("2022-10-13 13:33:00"), parseDate("2022-10-13 13:57:00"), "Conexion de internet inestable", cli2);
-        Llamada call8 = new Llamada(parseDate("2022-10-25 14:12:00"), parseDate("2022-10-25 14:37:00"), "Aire acondicionado para realizar limpieza", cli4);
-        Llamada call9 = new Llamada(parseDate("2022-11-25 10:33:00"), null, "Quejas por mala atencion", cli1);
 
-        // Asiganar llamadas a puestos (llamadas ya finalizadas)
-        s1.asignarLlamada(p1, call1);
-        s2.asignarLlamada(p2, call2);
-        s2.asignarLlamada(p3, call3);
-        s1.asignarLlamada(p1, call4);
-        s3.asignarLlamada(p4, call5);
-        s3.asignarLlamada(p4, call6);
-        s4.asignarLlamada(p8, call7);
-        s5.asignarLlamada(p9, call8);
-//        s1.asignarLlamada(p1, call9);
+//        Llamada call1 = new Llamada(parseDate("2022-06-25 10:33:00"), parseDate("2022-06-25 10:37:00"), "Pedido de licencia", cli1);
+//        Llamada call2 = new Llamada(parseDate("2022-07-05 11:23:00"), parseDate("2022-07-05 11:40:00"), "Nuevo anuncio publicitario", cli2);
+//        Llamada call3 = new Llamada(parseDate("2022-07-20 11:05:00"), parseDate("2022-07-20 11:17:00"), "Informe de publicidad", cli3);
+//        Llamada call4 = new Llamada(parseDate("2022-08-15 12:33:00"), parseDate("2022-08-15 12:47:00"), "Certificacion por enfermedad", cli4);
+//        Llamada call5 = new Llamada(parseDate("2022-09-02 10:27:00"), parseDate("2022-09-02 10:37:00"), "Coordinacion de reunion", cli5);
+//        Llamada call6 = new Llamada(parseDate("2022-10-01 13:04:00"), parseDate("2022-10-01 13:27:00"), "Solicitud de constancia", cli2);
+//        Llamada call7 = new Llamada(parseDate("2022-10-13 13:33:00"), parseDate("2022-10-13 13:57:00"), "Conexion de internet inestable", cli2);
+//        Llamada call8 = new Llamada(parseDate("2022-10-25 14:12:00"), parseDate("2022-10-25 14:37:00"), "Aire acondicionado para realizar limpieza", cli4);
+//
+//         Asiganar llamadas a puestos (llamadas ya finalizadas)
+//        s1.asignarLlamada(p1, call1);
+//        s2.asignarLlamada(p2, call2);
+//        s2.asignarLlamada(p3, call3);
+//        s1.asignarLlamada(p1, call4);
+//        s3.asignarLlamada(p4, call5);
+//        s3.asignarLlamada(p4, call6);
+//        s4.asignarLlamada(p8, call7);
+//        s5.asignarLlamada(p9, call8);
 
-        System.out.println("segundos " + call8.duracion());
 
         FachadaSistema.getInstancia().agregarTrabajador(t1);
+        FachadaSistema.getInstancia().agregarTrabajador(t2);
+        FachadaSistema.getInstancia().agregarTrabajador(t3);
+        FachadaSistema.getInstancia().agregarTrabajador(t4);
+        FachadaSistema.getInstancia().agregarTrabajador(t5);
+        FachadaSistema.getInstancia().agregarTrabajador(t6);
+        FachadaSistema.getInstancia().agregarTrabajador(t7);
+        FachadaSistema.getInstancia().agregarTrabajador(t8);
+        FachadaSistema.getInstancia().agregarTrabajador(t10);
+
+        FachadaSistema.getInstancia().agregarCliente(cli1);
+        FachadaSistema.getInstancia().agregarCliente(cli2);
+        FachadaSistema.getInstancia().agregarCliente(cli3);
+        FachadaSistema.getInstancia().agregarCliente(cli4);
+        FachadaSistema.getInstancia().agregarCliente(cli5);
+
+        
+        FachadaSistema.getInstancia().agregarSector(s1);
+        FachadaSistema.getInstancia().agregarSector(s2);
+        FachadaSistema.getInstancia().agregarSector(s3);
+        FachadaSistema.getInstancia().agregarSector(s4);
+        FachadaSistema.getInstancia().agregarSector(s5);
+        
+
 
     }
 
