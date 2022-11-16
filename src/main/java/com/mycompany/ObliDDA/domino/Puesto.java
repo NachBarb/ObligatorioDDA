@@ -22,6 +22,7 @@ public class Puesto extends Observable implements Observer{
         this.llamadaEnCurso = null;
         this.llamadas = new ArrayList<>();
         this.id = serial++;
+        this.addObserver(sector);
     }
 
     public int getId() {
@@ -77,7 +78,6 @@ public class Puesto extends Observable implements Observer{
             llamadaEnCurso = call;
             llamadaEnCurso.setAtencion(new Date());
             llamadaEnCurso.addObserver(this);
-            llamadaAtendida();
         }
     }
 
@@ -94,12 +94,18 @@ public class Puesto extends Observable implements Observer{
         return secondsInInt;
     }
     
+    public void puestoLibre(){
+            notifyObservers(Observer.Eventos.PuestoLibre);
+
+    }
+    
     public void llamadaAtendida() {
         notifyObservers(Observer.Eventos.LlamadaAtendida);
     }
     
     public void llamadaFinalizada() {
         notifyObservers(Observer.Eventos.LlamadaFinalizada);
+        puestoLibre();
     }
 
     @Override

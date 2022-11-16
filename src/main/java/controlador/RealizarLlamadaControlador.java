@@ -90,7 +90,7 @@ public class RealizarLlamadaControlador implements Observer {
             JOptionPane.showMessageDialog(vista, sectorExcepcion.getMessage());
         }
     }
-
+    
     public void finalizarLlamada() {
         vista.limpiarPantalla();
         modelo.getLlamada().finalizarLlamada();

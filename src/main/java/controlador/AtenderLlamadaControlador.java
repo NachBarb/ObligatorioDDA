@@ -17,7 +17,7 @@ import observer.Observer;
  *
  * @author MSI
  */
-public class AtenderLlamadaControlador implements Observer{
+public class AtenderLlamadaControlador implements Observer {
 
     private AtenderLlamada vista;
     private Puesto puesto;
@@ -29,26 +29,27 @@ public class AtenderLlamadaControlador implements Observer{
         this.puesto.addObserver(this);
 
     }
-    
+
     public void finalizarLlamada() {
-       String descrip = vista.devolverDesc();
-       if(puesto.getLlamadaEnCurso() != null){
-       puesto.finalizarLlamada(descrip);
-       puesto.setLlamadaEnCurso(null);
-       puesto.getLlamadas().get(puesto.getCantidadLlamadas()-1).finalizarLlamada();
-       }
-            vista.setStatus("No hay llamada en curso...");
-            vista.setDescripcion("");
-            vista.setCliente("");
-            vista.setTiempoP(puesto.promedioTiempoLlamada());
+        String descrip = vista.devolverDesc();
+        if (puesto.getLlamadaEnCurso() != null) {
+            puesto.finalizarLlamada(descrip);
+            puesto.setLlamadaEnCurso(null);
+            puesto.getLlamadas().get(puesto.getCantidadLlamadas() - 1).finalizarLlamada();
+        vista.setStatus("No hay llamada en curso...");
+        vista.setDescripcion("");
+        vista.setCliente("");
+        vista.setTiempoP(puesto.promedioTiempoLlamada());
+            this.puesto.puestoLibre();
+        }
 
     }
-    
+
     public void inicializar(Puesto puesto) {
 
         vista.setTrabajadorNombre(puesto.getTrabajador().getNombre());
-        if (puesto.getTrabajador().getPuesto().getLlamadaEnCurso() != null) {
-            vista.setCliente(puesto.getTrabajador().getPuesto().getLlamadaEnCurso().getCliente().getNombre());
+        if (puesto.getLlamadaEnCurso() != null) {
+            vista.setCliente(puesto.getLlamadaEnCurso().getCliente().getNombre());
             vista.setStatus("Llamada en curso...");
         } else {
             vista.setStatus("No hay llamada en curso...");
@@ -62,13 +63,13 @@ public class AtenderLlamadaControlador implements Observer{
 
     @Override
     public void update(Observable source, Object event) {
-                if(event.equals(Observer.Eventos.LlamadaAtendida)){
-        inicializar(puesto);
+        if (event.equals(Observer.Eventos.LlamadaAtendida)) {
+            inicializar(puesto);
         }
-                if(event.equals(Observer.Eventos.LlamadaFinalizada)){
-                    if(puesto.getLlamadaEnCurso() != null){
-        finalizarLlamada();
-                    }
+        if (event.equals(Observer.Eventos.LlamadaFinalizada)) {
+            if (puesto.getLlamadaEnCurso() != null) {
+                finalizarLlamada();
+            }
         }
     }
 

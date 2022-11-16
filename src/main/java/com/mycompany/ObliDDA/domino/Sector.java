@@ -5,7 +5,7 @@ import java.util.HashMap;
 import observer.Observable;
 import observer.Observer;
 
-public class Sector{
+public class Sector implements Observer{
 
 
     @Override
@@ -32,6 +32,7 @@ public class Sector{
         this.nombre = nombre;
         this.cantidadPuestos = cantidadPuestos;
         this.id = serial++;
+        this.llamadasEnEspera = new ArrayList<Llamada>();
     }
 
     public int getId() {
@@ -69,6 +70,7 @@ public class Sector{
                 }
             }
             if (!existePuesto) {
+                p.addObserver(this);
                 puestos.add(p);
                 ok = true;
             }
@@ -125,6 +127,7 @@ public class Sector{
     }
     
     public Puesto asignarLlamada(Llamada call) {
+        System.out.println("Entre a asignar");
         Puesto puesto = null;
         boolean hayPuestoLibre = false;
         for (int i = 0; i < puestos.size() && !hayPuestoLibre; i++) {
@@ -132,18 +135,37 @@ public class Sector{
                 puesto = puestos.get(i);
                 call.setPuesto(puesto);
                 puesto.setLlamadaEnCurso(call);
+                System.out.println("EncontrePuestoLibre");
                 hayPuestoLibre = true;
+                call.addObserver(puesto);
             }
         }
         if(!hayPuestoLibre){
         this.llamadasEnEspera.add(call);
+            System.out.println("Cantidad llmadas en espera "+llamadasEnEspera.size());
+        call.llamadaEspera();
         }
         
         return puesto;
     }    
     
+    @Override
+    public void update(Observable source, Object event) {
+        if(event.equals(Observer.Eventos.PuestoLibre)){
+            System.out.println("Espera" + llamadasEnEspera.size());
+        if(llamadasEnEspera.size() > 0){
+            System.out.println("Entre");
+            Llamada proxLlamada = llamadasEnEspera.get(0);
+            asignarLlamada(proxLlamada);
+        }
+    }
+    }
+    
+    
+    
     //Metodo para la precarga
     public void asignarLlamada(Puesto puesto, Llamada call) {
         puesto.agregarLlamada(call);
     }
+
 }

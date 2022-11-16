@@ -114,6 +114,10 @@ public class Llamada extends Observable {
     public void iniciarLlamada() {
         notifyObservers(Observer.Eventos.LlamadaIniciada);
     }
+    
+    public void llamadaEspera() {
+        notifyObservers(Observer.Eventos.LlamadaEnEspera);
+    }
 
     public void llamadaAtendida() {
         notifyObservers(Observer.Eventos.LlamadaAtendida);

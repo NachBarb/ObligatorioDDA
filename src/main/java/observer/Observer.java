@@ -12,9 +12,10 @@ public interface Observer {
     
     public enum Eventos{
         LlamadaIniciada,
+        LlamadaEnEspera,
+        LlamadaAtendida,
         LlamadaFinalizada,
-        LlamadaFinalizadaCliente,
-        LlamadaAtendida
+        PuestoLibre
     }
     
     public void update(Observable source, Object event);
