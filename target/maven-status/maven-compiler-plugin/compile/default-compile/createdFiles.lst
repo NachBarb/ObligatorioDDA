@@ -5,6 +5,7 @@ com\mycompany\ObliDDA\domino\Puesto.class
 com\mycompany\ObliDDA\iu\RealizarLlamada$5.class
 com\mycompany\ObliDDA\iu\RealizarLlamada$7.class
 controlador\AtenderLlamadaControlador.class
+controlador\ControllerMonitoreo.class
 controlador\LoginControlador.class
 com\mycompany\ObliDDA\iu\Inicio.class
 logica\FachadaSistema.class
@@ -17,7 +18,6 @@ logica\ServicioCliente.class
 com\mycompany\ObliDDA\domino\CostoLlamada.class
 com\mycompany\ObliDDA\domino\Llamada.class
 com\mycompany\ObliDDA\iu\Inicio$3.class
-com\mycompany\ObliDDA\iu\RealizarLlamada$12.class
 com\mycompany\ObliDDA\iu\RealizarLlamada$2.class
 com\mycompany\ObliDDA\iu\AtenderLlamada.class
 com\mycompany\ObliDDA\iu\RealizarLlamada$10.class
@@ -39,5 +39,6 @@ logica\ServicioSector.class
 com\mycompany\ObliDDA\iu\RealizarLlamada$1.class
 com\mycompany\ObliDDA\iu\RealizarLlamada$11.class
 com\mycompany\ObliDDA\iu\Inicio$2.class
+com\mycompany\ObliDDA\domino\SectorExcepcion.class
 com\mycompany\ObliDDA\iu\AtenderLlamada$1.class
 com\mycompany\ObliDDA\iu\RealizarLlamada$6.class

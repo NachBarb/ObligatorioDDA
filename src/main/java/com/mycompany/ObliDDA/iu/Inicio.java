@@ -92,7 +92,8 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_bUsuarioActionPerformed
 
     private void bMonitoreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMonitoreoActionPerformed
-        // TODO add your handling code here:
+        Monitoreo dialogo = new Monitoreo(this, false);
+        dialogo.setVisible(true);
     }//GEN-LAST:event_bMonitoreoActionPerformed
 
     /**

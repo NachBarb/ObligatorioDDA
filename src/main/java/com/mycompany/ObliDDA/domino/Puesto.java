@@ -2,14 +2,13 @@ package com.mycompany.ObliDDA.domino;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 public class Puesto {
 
     private Sector sector;
     private Trabajador trabajador;
     private Llamada llamadaEnCurso;
-    private ArrayList<Llamada> llamadas = new ArrayList<>();
+    private ArrayList<Llamada> llamadas;
     private static int serial = 1;
     private int id;
 
@@ -21,12 +20,12 @@ public class Puesto {
         this.id = serial++;
     }
 
-    public ArrayList<Llamada> getLlamadas() {
-        return llamadas;
-    }
-
     public int getId() {
         return id;
+    }
+
+    public ArrayList<Llamada> getLlamadas() {
+        return llamadas;
     }
 
     public Sector getSector() {
