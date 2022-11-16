@@ -56,9 +56,9 @@ public class Puesto {
         return cantidadLlamadas;
     }
 
-  
-    public void finalizarLlamada(Llamada llamadaEnCurso, String descripcion) {
-        if (llamadaEnCurso.getFin() == null) {
+
+    public void finalizarLlamada(String descripcion) {
+        if (llamadaEnCurso != null) {
             llamadaEnCurso.setFin(new Date());
             llamadaEnCurso.setDescripcion(descripcion);
             llamadas.add(llamadaEnCurso);
