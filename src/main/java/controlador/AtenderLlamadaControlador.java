@@ -10,56 +10,66 @@ import com.mycompany.ObliDDA.domino.Puesto;
 import com.mycompany.ObliDDA.iu.AtenderLlamada;
 import java.util.ArrayList;
 import logica.FachadaSistema;
+import observer.Observable;
+import observer.Observer;
 
 /**
  *
  * @author MSI
  */
-public class AtenderLlamadaControlador {
+public class AtenderLlamadaControlador implements Observer{
 
     private AtenderLlamada vista;
-    private Trabajador trabajador;
+    private Puesto puesto;
 
     public AtenderLlamadaControlador(AtenderLlamada vista, Trabajador trabajador) {
 
         this.vista = vista;
-        this.trabajador = trabajador;
+        this.puesto = trabajador.getPuesto();
+        this.puesto.addObserver(this);
 
     }
-
-    public void finalizarLlamada(Puesto puesto, String descrip) {
-        puesto.finalizarLlamada(descrip);
-
-        ArrayList<Llamada> llamadas = vista.getTrabajador().getPuesto().getLlamadas();
-        String[] array = new String[llamadas.size()];
-        int index = 0;
-        for (Object value : llamadas) {
-            System.out.println(value.toString());
-            index++;
-        }
-
-        if (trabajador.getPuesto().getLlamadaEnCurso() == null) {
+    
+    public void finalizarLlamada() {
+       String descrip = vista.devolverDesc();
+       if(puesto.getLlamadaEnCurso() != null){
+       puesto.finalizarLlamada(descrip);
+       puesto.setLlamadaEnCurso(null);
+       puesto.getLlamadas().get(puesto.getCantidadLlamadas()-1).finalizarLlamada();
+       }
             vista.setStatus("No hay llamada en curso...");
             vista.setDescripcion("");
-            vista.setTiempoP(trabajador.getPuesto().promedioTiempoLlamada());
-        }
+            vista.setCliente("");
+            vista.setTiempoP(puesto.promedioTiempoLlamada());
 
     }
-
+    
     public void inicializar(Puesto puesto) {
 
-        vista.setTrabajadorNombre(trabajador.getNombre());
-        if (trabajador.getPuesto().getLlamadaEnCurso() != null) {
-            vista.setCliente(trabajador.getPuesto().getLlamadaEnCurso().getCliente().getNombre());
+        vista.setTrabajadorNombre(puesto.getTrabajador().getNombre());
+        if (puesto.getTrabajador().getPuesto().getLlamadaEnCurso() != null) {
+            vista.setCliente(puesto.getTrabajador().getPuesto().getLlamadaEnCurso().getCliente().getNombre());
             vista.setStatus("Llamada en curso...");
         } else {
             vista.setStatus("No hay llamada en curso...");
         }
 
-        vista.setSector(trabajador.getSector().getNombre());
-        vista.setPuesto(trabajador.getPuesto().getId());
-        vista.setLlamada(trabajador.getPuesto().getCantidadLlamadas());
-        vista.setTiempoP(trabajador.getPuesto().promedioTiempoLlamada());
+        vista.setSector(puesto.getTrabajador().getSector().getNombre());
+        vista.setPuesto(puesto.getTrabajador().getPuesto().getId());
+        vista.setLlamada(puesto.getTrabajador().getPuesto().getCantidadLlamadas());
+        vista.setTiempoP(puesto.getTrabajador().getPuesto().promedioTiempoLlamada());
+    }
+
+    @Override
+    public void update(Observable source, Object event) {
+                if(event.equals(Observer.Eventos.LlamadaAtendida)){
+        inicializar(puesto);
+        }
+                if(event.equals(Observer.Eventos.LlamadaFinalizada)){
+                    if(puesto.getLlamadaEnCurso() != null){
+        finalizarLlamada();
+                    }
+        }
     }
 
 }

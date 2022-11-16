@@ -95,10 +95,23 @@ public class Llamada extends Observable {
         return result;
     }
 
-    public void finalizarLlamada() {
-        setFin(new Date());
-        notifyObservers(Observer.Eventos.LlamadaFinalizada);
+    public int espera() {
+        long delta = getAtencion().getTime() - getInicio().getTime();
+        TimeUnit time = TimeUnit.SECONDS;
+        int result = (int) time.convert(delta, TimeUnit.MILLISECONDS);
+        return result;
+    }
 
+    public void iniciarLlamada() {
+        notifyObservers(Observer.Eventos.LlamadaIniciada);
+    }
+
+    public void llamadaAtendida() {
+        notifyObservers(Observer.Eventos.LlamadaAtendida);
+    }
+
+    public void finalizarLlamada() {
+        notifyObservers(Observer.Eventos.LlamadaFinalizada);
     }
 
     @Override

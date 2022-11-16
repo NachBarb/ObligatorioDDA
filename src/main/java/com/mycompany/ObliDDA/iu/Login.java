@@ -126,7 +126,7 @@ public class Login extends javax.swing.JDialog {
 
     public void ejecutarSiguienteCU(Trabajador trabajador) {
 
-        AtenderLlamada all = new AtenderLlamada((java.awt.Frame) this.getParent(), true, trabajador);
+        AtenderLlamada all = new AtenderLlamada((java.awt.Frame) this.getParent(), false, trabajador);
         all.setVisible(true);
         dispose();
     }

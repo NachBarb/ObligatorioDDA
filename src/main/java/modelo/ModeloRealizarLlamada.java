@@ -5,7 +5,10 @@
 package modelo;
 
 import com.mycompany.ObliDDA.domino.Cliente;
+import com.mycompany.ObliDDA.domino.CostoLlamada;
+import com.mycompany.ObliDDA.domino.Llamada;
 import com.mycompany.ObliDDA.domino.Puesto;
+import com.mycompany.ObliDDA.domino.Sector;
 import java.text.SimpleDateFormat;
 
 /**
@@ -13,10 +16,28 @@ import java.text.SimpleDateFormat;
  * @author Martin
  */
 public class ModeloRealizarLlamada {
+    private Sector sector;
     private String numSector;
     private Cliente cliente;
     private Puesto puesto;
     private String cedula;
+    private Llamada llamada;
+
+    public Llamada getLlamada() {
+        return llamada;
+    }
+
+    public void setLlamada(Llamada llamada) {
+        this.llamada = llamada;
+    }
+
+    public Sector getSector() {
+        return sector;
+    }
+
+    public void setSector(Sector sector) {
+        this.sector = sector;
+    }
 
     public Cliente getCliente() {
         return cliente;
@@ -55,17 +76,26 @@ public class ModeloRealizarLlamada {
     }
     
     public void updateNumSector(String caracter) {
-       setCedula(numSector.concat(caracter));
+       setNumSector(numSector.concat(caracter));
     }
     
     public String mensajeInicioDeLlamada() {
-        return "Llamada en curso… ud. se está comunicando con el sector " 
+        return "Llamada en curso… ud. se está comunicando con el sector \n" 
                 + puesto.getSector().getNombre() 
-                + "Y está siendo atendido por " 
+                + "Y está siendo atendido por \n" 
                 + puesto.getTrabajador().getNombre() 
-                + " Su llamada se ha iniciado en " 
-                + new SimpleDateFormat("yyyy-MM-dd").format(puesto.getLlamadaEnCurso().getInicio());
+                + " Su llamada se ha iniciado en \n" 
+                + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(puesto.getLlamadaEnCurso().getAtencion());
     }
+    
+    public String mensajeFinDeLlamada(){
+    return "Llamada Finalizada... \n"
+            +"Duracion: " + Integer.toString(llamada.duracion()) + " segundos \n"
+            +"Costo: " + Double.toString(new CostoLlamada(cliente , llamada).CostoToal())+ "\n"+
+            "Saldo del cliente " + Double.toString(cliente.saldoDeCliente())
+            ;
+    }
+    
     
     
 }

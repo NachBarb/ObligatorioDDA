@@ -20,7 +20,7 @@ public class RealizarLlamada extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setControlador(new RealizarLlamadaControlador(this, new ModeloRealizarLlamada()));
-        mensajeEnPantalla("Ingrese su cedula");
+        mensajeEnPantalla("Ingrese su cedula seguido de la tecla #");
     }
 
     private RealizarLlamadaControlador controlador;
@@ -51,6 +51,7 @@ public class RealizarLlamada extends javax.swing.JDialog {
         bFinalizar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         lSectores = new javax.swing.JList<>();
+        bIniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -142,8 +143,20 @@ public class RealizarLlamada extends javax.swing.JDialog {
         bSalir.setText("Salir");
 
         bFinalizar.setText("Finalizar");
+        bFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFinalizarActionPerformed(evt);
+            }
+        });
 
         jScrollPane3.setViewportView(lSectores);
+
+        bIniciar.setText("Iniciar");
+        bIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bIniciarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,6 +206,8 @@ public class RealizarLlamada extends javax.swing.JDialog {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(96, 96, 96))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bIniciar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bFinalizar)
                         .addGap(59, 59, 59))))
         );
@@ -200,7 +215,9 @@ public class RealizarLlamada extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(bFinalizar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bFinalizar)
+                    .addComponent(bIniciar))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -280,6 +297,14 @@ public class RealizarLlamada extends javax.swing.JDialog {
         controlador.numeral();
     }//GEN-LAST:event_bHashActionPerformed
 
+    private void bIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bIniciarActionPerformed
+        controlador.iniciarLlamada();
+    }//GEN-LAST:event_bIniciarActionPerformed
+
+    private void bFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinalizarActionPerformed
+        controlador.finalizarLlamada();
+    }//GEN-LAST:event_bFinalizarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b0;
     private javax.swing.JButton b1;
@@ -294,6 +319,7 @@ public class RealizarLlamada extends javax.swing.JDialog {
     private javax.swing.JButton bAster;
     private javax.swing.JButton bFinalizar;
     private javax.swing.JButton bHash;
+    private javax.swing.JButton bIniciar;
     private javax.swing.JButton bSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
