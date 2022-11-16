@@ -89,9 +89,12 @@ public class ModeloRealizarLlamada {
     }
     
     public String mensajeFinDeLlamada(){
+        CostoLlamada costoLlamada = new CostoLlamada(cliente , llamada);
+        double costo = costoLlamada.CostoToal();
+        cliente.setSaldo(costo + cliente.getSaldo());
     return "Llamada Finalizada... \n"
             +"Duracion: " + Integer.toString(llamada.duracion()) + " segundos \n"
-            +"Costo: " + Double.toString(new CostoLlamada(cliente , llamada).CostoToal())+ "\n"+
+            +"Costo: " + Double.toString(costo)+ "\n"+
             "Saldo del cliente " + Double.toString(cliente.saldoDeCliente())
             ;
     }

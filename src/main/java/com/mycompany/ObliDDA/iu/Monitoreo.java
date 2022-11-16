@@ -134,13 +134,18 @@ public class Monitoreo extends javax.swing.JDialog {
         });
 
         bAster.setText("*");
+        bAster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAsterActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Para seleccionar un sector digite su número seguido \ndel #.\n\nPara mostrar las llamadas de todos los sectores \npresione unicamente #.\n");
+        jTextArea1.setText("Para seleccionar un sector digite su número seguido \ndel #.\n\nPara mostrar las llamadas de todos los sectores \npresione unicamente #.\n\nPara resetear el filtro presione *.");
         jScrollPane4.setViewportView(jTextArea1);
 
-        jLabel2.setText("#  -   Estado    -                Inicio              -             Atención             -                Fin                -  Puesto  -    Trabajador    -  Duración  -  Costo  -    Cliente    -  Saldo");
+        jLabel2.setText(" Sector   -      #  -   Estado    -                Inicio              -             Atención             -                Fin                -  Puesto  -    Trabajador    -  Duración  -  Costo  -    Cliente    -  Saldo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,6 +154,9 @@ public class Monitoreo extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -188,9 +196,7 @@ public class Monitoreo extends javax.swing.JDialog {
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(14, 14, 14))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 881, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(28, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -281,6 +287,9 @@ public class Monitoreo extends javax.swing.JDialog {
     private void b0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b0ActionPerformed
         controlador.digito("0");
     }//GEN-LAST:event_b0ActionPerformed
+
+    private void bAsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAsterActionPerformed
+    controlador.aster();    }//GEN-LAST:event_bAsterActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b0;

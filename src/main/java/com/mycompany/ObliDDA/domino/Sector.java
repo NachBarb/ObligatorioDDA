@@ -5,7 +5,7 @@ import java.util.HashMap;
 import observer.Observable;
 import observer.Observer;
 
-public class Sector{
+public class Sector extends Observable implements Observer{
 
 
     @Override
@@ -32,6 +32,7 @@ public class Sector{
         this.nombre = nombre;
         this.cantidadPuestos = cantidadPuestos;
         this.id = serial++;
+        this.llamadasEnEspera = new ArrayList<Llamada>();
     }
 
     public int getId() {
@@ -55,10 +56,11 @@ public class Sector{
         for (Puesto p: puestos) {
             for (Llamada l: p.getLlamadas())
                 aux.add(l);
+            aux.add(p.getLlamadaEnCurso());
         }
         return aux;
     } 
-    
+     
     public boolean asignarPuestoASector(Puesto p) {
         boolean ok = false;
         boolean existePuesto = false;
@@ -69,6 +71,7 @@ public class Sector{
                 }
             }
             if (!existePuesto) {
+                p.addObserver(this);
                 puestos.add(p);
                 ok = true;
             }
@@ -125,25 +128,62 @@ public class Sector{
     }
     
     public Puesto asignarLlamada(Llamada call) {
+        System.out.println("Entre a asignar");
         Puesto puesto = null;
         boolean hayPuestoLibre = false;
         for (int i = 0; i < puestos.size() && !hayPuestoLibre; i++) {
             if (puestos.get(i).getLlamadaEnCurso() == null) {
                 puesto = puestos.get(i);
                 call.setPuesto(puesto);
+                call.setNombreTrabajador(puesto.getTrabajador().getNombre());
                 puesto.setLlamadaEnCurso(call);
+                System.out.println("EncontrePuestoLibre");
                 hayPuestoLibre = true;
+                call.addObserver(puesto);
             }
         }
         if(!hayPuestoLibre){
         this.llamadasEnEspera.add(call);
+            System.out.println("Cantidad llmadas en espera "+llamadasEnEspera.size());
+        call.llamadaEspera();
         }
         
         return puesto;
     }    
     
+    public void atender(Puesto puesto , Llamada call){
+        call.llamadaAtendida();
+        puesto.llamadaAtendida();
+        llamadaAtendidaSector();
+    }
+    
+    @Override
+    public void update(Observable source, Object event) {
+        if(event.equals(Observer.Eventos.PuestoLibre)){
+            System.out.println("Espera" + llamadasEnEspera.size());
+        if(llamadasEnEspera.size() > 0){
+            System.out.println("Entre");
+            Llamada proxLlamada = llamadasEnEspera.get(0);
+            llamadasEnEspera.remove(0);
+            asignarLlamada(proxLlamada);
+            atender(proxLlamada.getPuesto(),proxLlamada);
+            
+        }
+    }
+    }
+    
+    public void llamadaAtendidaSector(){
+        notifyObservers(Observer.Eventos.SectorAtiende);
+    }
+    
+    public void llamadaFinalizadaSector(){
+        notifyObservers(Observer.Eventos.SectorFinaliza);
+    }
+    
+    
     //Metodo para la precarga
     public void asignarLlamada(Puesto puesto, Llamada call) {
         puesto.agregarLlamada(call);
     }
+    
 }

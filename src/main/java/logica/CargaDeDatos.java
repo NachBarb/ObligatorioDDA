@@ -91,7 +91,19 @@ public class CargaDeDatos {
         Llamada call7 = new Llamada(parseDate("2022-10-13 13:33:00"), parseDate("2022-10-13 13:35:00"), parseDate("2022-10-13 13:57:00"), "Conexion de internet inestable", cli2, p8, "Damian Martinez");
         Llamada call8 = new Llamada(parseDate("2022-10-25 14:12:00"), parseDate("2022-10-25 14:15:00"), parseDate("2022-10-25 14:37:00"), "Aire acondicionado para realizar limpieza", cli4, p9, "Naomi Rodriguez");
 
-
+        
+        //Carga de los costos a los clientes
+        cli1.agregarCosto(new CostoLlamada(cli1,call1));
+        cli2.agregarCosto(new CostoLlamada(cli2,call2));
+        cli3.agregarCosto(new CostoLlamada(cli3,call3));
+        cli4.agregarCosto(new CostoLlamada(cli4,call4));
+        cli5.agregarCosto(new CostoLlamada(cli5,call5));
+        cli2.agregarCosto(new CostoLlamada(cli2,call6));
+        cli2.agregarCosto(new CostoLlamada(cli2,call7));
+        cli4.agregarCosto(new CostoLlamada(cli4,call8));
+        
+        
+        
         //Asiganar llamadas a puestos (llamadas ya finalizadas)
         s1.asignarLlamada(p1, call1);
         s2.asignarLlamada(p2, call2);

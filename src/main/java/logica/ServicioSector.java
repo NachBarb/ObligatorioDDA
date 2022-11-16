@@ -10,7 +10,7 @@ import java.util.Date;
 import observer.Observable;
 import observer.Observer;
 
-public class ServicioSector implements Observer {
+public class ServicioSector {
     private static final String NUMERO_S_INVALIDO = "Numero de sector no existe.";
     private static final String CANTIDADLLAMADAS = "Se ha alcanzado la cantidad maxima de llamadas";
 
@@ -77,10 +77,6 @@ public class ServicioSector implements Observer {
             }
         }
         return aux;
-    }
-
-    @Override
-    public void update(Observable source, Object event) {
     }
     
 }
