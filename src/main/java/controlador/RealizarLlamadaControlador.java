@@ -115,7 +115,6 @@ public class RealizarLlamadaControlador implements Observer {
         }
         if (event.equals(Observer.Eventos.LlamadaFinalizada)) {
             modelo.getLlamada().setFin(new Date());
-            modelo.getCliente().agregarCosto(new CostoLlamada(modelo.getCliente() , modelo.getLlamada()));
             vista.limpiarPantalla();
             vista.mensajeEnPantalla(modelo.mensajeFinDeLlamada());
         }

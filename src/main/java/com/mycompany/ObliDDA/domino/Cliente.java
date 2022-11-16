@@ -56,7 +56,9 @@ public class Cliente {
     
     public double saldoDeCliente(){
         double saldoTotal = saldo;
+        System.out.println("Saldo" + Double.toString(saldoTotal));
         for(CostoLlamada c : costos){
+            System.out.println("Costo" + Double.toString(c.CostoToal()));
         saldoTotal = saldoTotal + c.CostoToal();
         }
     return saldoTotal;

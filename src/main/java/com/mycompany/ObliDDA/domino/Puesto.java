@@ -64,6 +64,7 @@ public class Puesto extends Observable implements Observer{
     public void finalizarLlamada(String descripcion) {
         if (llamadaEnCurso != null) {
             llamadaEnCurso.setFin(new Date());
+            llamadaEnCurso.setNombreTrabajador(trabajador.getNombre());
             llamadaEnCurso.setDescripcion(descripcion);
             llamadas.add(llamadaEnCurso);
         }
