@@ -220,8 +220,7 @@ public class AtenderLlamada extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tFinalizarLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFinalizarLlamadaActionPerformed
-        // TODO add your handling code here:
-        controlador.finalizarLlamada(trabajador.getPuesto(), tDescripcion.getText());
+       controlador.finalizarLlamada();
     }//GEN-LAST:event_tFinalizarLlamadaActionPerformed
 
     private void tSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tSalirActionPerformed
@@ -286,6 +285,10 @@ public class AtenderLlamada extends javax.swing.JDialog {
 
     public void setCliente(String cliente) {
         tCliente.setText(cliente);
+    }
+    
+    public String devolverDesc(){
+    return tDescripcion.getText();
     }
 
 }

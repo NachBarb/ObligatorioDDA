@@ -2,8 +2,14 @@ package com.mycompany.ObliDDA.domino;
 
 import java.util.ArrayList;
 import java.util.Date;
+<<<<<<< HEAD
+=======
+import java.util.concurrent.TimeUnit;
+import observer.Observable;
+import observer.Observer;
+>>>>>>> fc9efa6 (Implentacion Exitosa de observer)
 
-public class Puesto {
+public class Puesto extends Observable implements Observer{
 
     private Sector sector;
     private Trabajador trabajador;
@@ -62,7 +68,6 @@ public class Puesto {
             llamadaEnCurso.setFin(new Date());
             llamadaEnCurso.setDescripcion(descripcion);
             llamadas.add(llamadaEnCurso);
-            llamadaEnCurso = null;
         }
     }
 
@@ -71,6 +76,9 @@ public class Puesto {
             llamadas.add(call);
         } else {
             llamadaEnCurso = call;
+            llamadaEnCurso.setAtencion(new Date());
+            llamadaEnCurso.addObserver(this);
+            llamadaAtendida();
         }
     }
 
@@ -85,5 +93,20 @@ public class Puesto {
         }
         int secondsInInt = (int) totalSeconds;
         return secondsInInt;
+    }
+    
+    public void llamadaAtendida() {
+        notifyObservers(Observer.Eventos.LlamadaAtendida);
+    }
+    
+    public void llamadaFinalizada() {
+        notifyObservers(Observer.Eventos.LlamadaFinalizada);
+    }
+
+    @Override
+    public void update(Observable source, Object event) {
+        if(event.equals(Observer.Eventos.LlamadaFinalizada)){
+            notifyObservers(Observer.Eventos.LlamadaFinalizada);
+        }
     }
 }
