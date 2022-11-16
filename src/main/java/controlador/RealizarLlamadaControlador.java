@@ -81,9 +81,8 @@ public class RealizarLlamadaControlador implements Observer {
                 vista.mensajeEnPantalla("Su llamada se ha puesto en espera");
             } else {
                 modelo.setPuesto(puestoAsignado);
-                modelo.getLlamada().addObserver(puestoAsignado);
-                modelo.getLlamada().llamadaAtendida();
-                puestoAsignado.llamadaAtendida();
+                 modelo.getSector().atender(puestoAsignado,modelo.getLlamada());
+//                
             }
 
         } catch (SectorExcepcion sectorExcepcion) {
@@ -111,6 +110,7 @@ public class RealizarLlamadaControlador implements Observer {
         }
         if (event.equals(Observer.Eventos.LlamadaAtendida)) {
             modelo.getLlamada().setAtencion(new Date());
+            modelo.setPuesto(modelo.getLlamada().getPuesto());
             vista.mensajeEnPantalla(modelo.mensajeInicioDeLlamada());
         }
         if (event.equals(Observer.Eventos.LlamadaFinalizada)) {

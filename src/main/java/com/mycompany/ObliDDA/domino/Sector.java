@@ -138,6 +138,7 @@ public class Sector implements Observer{
                 System.out.println("EncontrePuestoLibre");
                 hayPuestoLibre = true;
                 call.addObserver(puesto);
+                
             }
         }
         if(!hayPuestoLibre){
@@ -149,6 +150,11 @@ public class Sector implements Observer{
         return puesto;
     }    
     
+    public void atender(Puesto puesto , Llamada call){
+        call.llamadaAtendida();
+        puesto.llamadaAtendida();
+    }
+    
     @Override
     public void update(Observable source, Object event) {
         if(event.equals(Observer.Eventos.PuestoLibre)){
@@ -156,7 +162,10 @@ public class Sector implements Observer{
         if(llamadasEnEspera.size() > 0){
             System.out.println("Entre");
             Llamada proxLlamada = llamadasEnEspera.get(0);
+            llamadasEnEspera.remove(0);
             asignarLlamada(proxLlamada);
+            atender(proxLlamada.getPuesto(),proxLlamada);
+            
         }
     }
     }
