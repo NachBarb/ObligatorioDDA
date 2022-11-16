@@ -5,6 +5,7 @@
 package modelo;
 
 import com.mycompany.ObliDDA.domino.Cliente;
+import com.mycompany.ObliDDA.domino.CostoLlamada;
 import com.mycompany.ObliDDA.domino.Llamada;
 import com.mycompany.ObliDDA.domino.Puesto;
 import com.mycompany.ObliDDA.domino.Sector;
@@ -89,7 +90,10 @@ public class ModeloRealizarLlamada {
     
     public String mensajeFinDeLlamada(){
     return "Llamada Finalizada... \n"
-            +"Duracion: " + Integer.toString(llamada.duracion()) + " segundos \n";
+            +"Duracion: " + Integer.toString(llamada.duracion()) + " segundos \n"
+            +"Costo: " + Double.toString(new CostoLlamada(cliente , llamada).CostoToal())+ "\n"+
+            "Saldo del cliente " + Double.toString(cliente.saldoDeCliente())
+            ;
     }
     
     

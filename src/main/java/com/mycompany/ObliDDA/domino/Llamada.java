@@ -94,11 +94,18 @@ public class Llamada extends Observable {
         int result = (int) time.convert(delta, TimeUnit.MILLISECONDS);
         return result;
     }
-    
-    public void iniciarLlamada(){
-    notifyObservers(Observer.Eventos.LlamadaIniciada);
+
+    public int espera() {
+        long delta = getAtencion().getTime() - getInicio().getTime();
+        TimeUnit time = TimeUnit.SECONDS;
+        int result = (int) time.convert(delta, TimeUnit.MILLISECONDS);
+        return result;
     }
-    
+
+    public void iniciarLlamada() {
+        notifyObservers(Observer.Eventos.LlamadaIniciada);
+    }
+
     public void llamadaAtendida() {
         notifyObservers(Observer.Eventos.LlamadaAtendida);
     }

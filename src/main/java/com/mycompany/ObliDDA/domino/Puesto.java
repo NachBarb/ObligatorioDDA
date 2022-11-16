@@ -2,12 +2,10 @@ package com.mycompany.ObliDDA.domino;
 
 import java.util.ArrayList;
 import java.util.Date;
-<<<<<<< HEAD
-=======
 import java.util.concurrent.TimeUnit;
 import observer.Observable;
 import observer.Observer;
->>>>>>> fc9efa6 (Implentacion Exitosa de observer)
+
 
 public class Puesto extends Observable implements Observer{
 

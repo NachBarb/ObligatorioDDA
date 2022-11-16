@@ -1,6 +1,7 @@
 package controlador;
 
 import com.mycompany.ObliDDA.domino.ClienteExcepcion;
+import com.mycompany.ObliDDA.domino.CostoLlamada;
 import com.mycompany.ObliDDA.domino.Puesto;
 import com.mycompany.ObliDDA.domino.Sector;
 import com.mycompany.ObliDDA.domino.SectorExcepcion;
@@ -114,10 +115,10 @@ public class RealizarLlamadaControlador implements Observer {
         }
         if (event.equals(Observer.Eventos.LlamadaFinalizada)) {
             modelo.getLlamada().setFin(new Date());
+            modelo.getCliente().agregarCosto(new CostoLlamada(modelo.getCliente() , modelo.getLlamada()));
             vista.limpiarPantalla();
             vista.mensajeEnPantalla(modelo.mensajeFinDeLlamada());
         }
-
     }
 
 }
