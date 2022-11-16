@@ -5,7 +5,7 @@ import java.util.HashMap;
 import observer.Observable;
 import observer.Observer;
 
-public class Sector implements Observer{
+public class Sector extends Observable implements Observer{
 
 
     @Override
@@ -56,10 +56,11 @@ public class Sector implements Observer{
         for (Puesto p: puestos) {
             for (Llamada l: p.getLlamadas())
                 aux.add(l);
+            aux.add(p.getLlamadaEnCurso());
         }
         return aux;
     } 
-    
+     
     public boolean asignarPuestoASector(Puesto p) {
         boolean ok = false;
         boolean existePuesto = false;
@@ -134,11 +135,11 @@ public class Sector implements Observer{
             if (puestos.get(i).getLlamadaEnCurso() == null) {
                 puesto = puestos.get(i);
                 call.setPuesto(puesto);
+                call.setNombreTrabajador(puesto.getTrabajador().getNombre());
                 puesto.setLlamadaEnCurso(call);
                 System.out.println("EncontrePuestoLibre");
                 hayPuestoLibre = true;
                 call.addObserver(puesto);
-                
             }
         }
         if(!hayPuestoLibre){
@@ -153,6 +154,7 @@ public class Sector implements Observer{
     public void atender(Puesto puesto , Llamada call){
         call.llamadaAtendida();
         puesto.llamadaAtendida();
+        llamadaAtendidaSector();
     }
     
     @Override
@@ -170,11 +172,18 @@ public class Sector implements Observer{
     }
     }
     
+    public void llamadaAtendidaSector(){
+        notifyObservers(Observer.Eventos.SectorAtiende);
+    }
+    
+    public void llamadaFinalizadaSector(){
+        notifyObservers(Observer.Eventos.SectorFinaliza);
+    }
     
     
     //Metodo para la precarga
     public void asignarLlamada(Puesto puesto, Llamada call) {
         puesto.agregarLlamada(call);
     }
-
+    
 }

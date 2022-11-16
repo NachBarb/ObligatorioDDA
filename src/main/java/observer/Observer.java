@@ -15,6 +15,8 @@ public interface Observer {
         LlamadaEnEspera,
         LlamadaAtendida,
         LlamadaFinalizada,
+        SectorAtiende,
+        SectorFinaliza,
         PuestoLibre
     }
     

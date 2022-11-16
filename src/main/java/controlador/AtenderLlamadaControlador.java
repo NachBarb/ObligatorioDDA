@@ -41,6 +41,7 @@ public class AtenderLlamadaControlador implements Observer {
         vista.setCliente("");
         vista.setTiempoP(puesto.promedioTiempoLlamada());
             this.puesto.puestoLibre();
+            this.puesto.getSector().llamadaFinalizadaSector();
         }
 
     }

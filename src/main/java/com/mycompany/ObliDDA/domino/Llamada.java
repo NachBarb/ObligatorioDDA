@@ -36,6 +36,7 @@ public class Llamada extends Observable {
         this.id = serial++;
     }
 
+
     public int getId() {
         return id;
     }
@@ -135,23 +136,24 @@ public class Llamada extends Observable {
         String finalizada;
         String numPuesto = Integer.toString(puesto.getId());
         String nomTrabajador = nombreTrabajador;
-        String duracion = Integer.toString(duracion());
+        String duracion;
         String costo;
         String nomCliente = this.cliente.getNombre();
         String saldo = Double.toString(this.cliente.saldoDeCliente());
         
         if (fin == null) {
             estado = "En curso";
-            finalizada = "***";
-            costo = "***";
+            finalizada = "                  ***                   ";
+            costo = " *** ";
+            duracion = " *** ";
         } else {
             estado = "Finalizado";
             finalizada = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.fin).toString();
             costo = Double.toString(new CostoLlamada(cliente,this).CostoToal());
+            duracion = Integer.toString(duracion());
         }    
         
-        return estado + " - " + iniciada + " - " + atendida + " - " + finalizada + " - " + 
-               numPuesto + " - " + nomTrabajador + " - " + duracion + " - " + costo + " - " + nomCliente + " - " + saldo;
+        return estado + " - " + iniciada + " - " + atendida + " - " + finalizada + " - " + numPuesto + " - " + nomTrabajador + " - " + duracion + " - " + costo + " - " + nomCliente + " - " + saldo;
     }
 
 }
