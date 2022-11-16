@@ -113,6 +113,7 @@ public class RealizarLlamadaControlador implements Observer {
             vista.mensajeEnPantalla(modelo.mensajeInicioDeLlamada());
         }
         if (event.equals(Observer.Eventos.LlamadaFinalizada)) {
+            modelo.getLlamada().setFin(new Date());
             vista.limpiarPantalla();
             vista.mensajeEnPantalla(modelo.mensajeFinDeLlamada());
         }
