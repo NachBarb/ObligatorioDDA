@@ -4,22 +4,30 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Puesto {
+
     private Sector sector;
     private Trabajador trabajador;
     private Llamada llamadaEnCurso;
-    private ArrayList<Llamada> llamadas = new ArrayList<>();
+    private ArrayList<Llamada> llamadas;
     private static int serial = 1;
     private int id;
 
     public Puesto(Sector sector) {
         this.sector = sector;
+        this.trabajador = null;
+        this.llamadaEnCurso = null;
+        this.llamadas = new ArrayList<>();
         this.id = serial++;
     }
 
     public int getId() {
         return id;
     }
-  
+
+    public ArrayList<Llamada> getLlamadas() {
+        return llamadas;
+    }
+
     public Sector getSector() {
         return sector;
     }
@@ -39,7 +47,7 @@ public class Puesto {
     public void setLlamadaEnCurso(Llamada llamadaEnCurso) {
         this.llamadaEnCurso = llamadaEnCurso;
     }
-    
+
     public int getCantidadLlamadas() {
         int cantidadLlamadas = llamadas.size();
         if (llamadaEnCurso != null) {
@@ -47,20 +55,35 @@ public class Puesto {
         }
         return cantidadLlamadas;
     }
-    
-    public void agregarDescripcionLlamada(Llamada llamadaEnCurso, String descripcion) {
-        llamadaEnCurso.setDescripcion(descripcion);
-    }
-    
-    public void finalizarLlamada(Llamada llamadaEnCurso) {
+
+  
+    public void finalizarLlamada(Llamada llamadaEnCurso, String descripcion) {
         if (llamadaEnCurso.getFin() == null) {
             llamadaEnCurso.setFin(new Date());
+            llamadaEnCurso.setDescripcion(descripcion);
             llamadas.add(llamadaEnCurso);
-            llamadaEnCurso = null;            
+            llamadaEnCurso = null;
         }
     }
-    
+
     public void agregarLlamada(Llamada call) {
-        llamadas.add(call);
+        if (call.getFin() != null) {
+            llamadas.add(call);
+        } else {
+            llamadaEnCurso = call;
+        }
+    }
+
+    public int promedioTiempoLlamada() {
+        long totalSeconds = 0;
+        for (int i = 0; i < llamadas.size(); i++) {
+            if (llamadas.get(i) != null) {
+                long difMiliSeconds = Math.abs(llamadas.get(i).getFin().getTime() - llamadas.get(i).getInicio().getTime());
+                long seconds = (difMiliSeconds / 1000);
+                totalSeconds = totalSeconds + seconds;
+            }
+        }
+        int secondsInInt = (int) totalSeconds;
+        return secondsInInt;
     }
 }
