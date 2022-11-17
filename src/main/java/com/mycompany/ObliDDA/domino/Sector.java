@@ -128,7 +128,6 @@ public class Sector extends Observable implements Observer{
             System.out.println("Cantidad llmadas en espera "+llamadasEnEspera.size());
         call.llamadaEspera();
         }
-        
         return puesto;
     }    
     

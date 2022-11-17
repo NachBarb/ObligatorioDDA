@@ -76,22 +76,26 @@ public class RealizarLlamadaControlador implements Observer {
             modelo.getLlamada().addObserver(this);
             modelo.getLlamada().iniciarLlamada();
             Puesto puestoAsignado = modelo.getSector().asignarLlamada(modelo.getLlamada());
+            FachadaSistema.getInstancia().inicioLlamada();
             if (puestoAsignado == null) {
                 vista.limpiarPantalla();
                 vista.mensajeEnPantalla("Su llamada se ha puesto en espera");
             } else {
                 modelo.setPuesto(puestoAsignado);
-                 modelo.getSector().atender(puestoAsignado,modelo.getLlamada());
-//                
+                 modelo.getSector().atender(puestoAsignado,modelo.getLlamada());              
             }
 
         } catch (SectorExcepcion sectorExcepcion) {
-vista.mostrarError(sectorExcepcion.getMessage());        }
+        vista.mostrarError(sectorExcepcion.getMessage());        }
     }
     
     public void finalizarLlamada() {
+        if(modelo.getLlamada() != null && modelo.getLlamada().getFin() == null){
         vista.limpiarPantalla();
         modelo.getLlamada().finalizarLlamada();
+        modelo.setLlamada(null);
+        FachadaSistema.getInstancia().terminoLlamada();
+        }
     }
 
     public void digito(String caracter) {
