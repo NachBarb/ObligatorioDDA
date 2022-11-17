@@ -104,8 +104,8 @@ public class Llamada extends Observable {
     @Override
     public String toString() {
         String estado;
-        String iniciada = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.inicio).toString();
-        String atendida = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.atencion).toString();
+        String iniciada = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.inicio);
+        String atendida = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.atencion);
         String finalizada;
         String numPuesto = Integer.toString(puesto.getId());
         String nomTrabajador = nombreTrabajador;
@@ -119,7 +119,7 @@ public class Llamada extends Observable {
             finalizada = "***";
         } else {
             estado = "Finalizado";
-            finalizada = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.fin).toString();
+            finalizada = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.fin);
         }    
         
         return estado + " - " + iniciada + " - " + atendida + " - " + finalizada + " - " + 
