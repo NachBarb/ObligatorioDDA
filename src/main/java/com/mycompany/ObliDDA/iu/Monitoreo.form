@@ -294,7 +294,7 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Para seleccionar un sector digite su n&#xfa;mero seguido &#xa;del #.&#xa;&#xa;Para mostrar las llamadas de todos los sectores &#xa;presione unicamente #.&#xa;&#xa;Para resetear el filtro presione *."/>
+            <Property name="text" type="java.lang.String" value="Para seleccionar un sector digite su n&#xfa;mero seguido &#xa;del #.&#xa;&#xa;Para mostrar las llamadas de todos los sectores &#xa;presione * seguido de  #.&#xa;&#xa;"/>
           </Properties>
         </Component>
       </SubComponents>

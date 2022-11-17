@@ -142,6 +142,11 @@ public class RealizarLlamada extends javax.swing.JDialog implements IRealizarLla
         jLabel1.setText("Mensaje de Central");
 
         bSalir.setText("Salir");
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
 
         bFinalizar.setText("Finalizar");
         bFinalizar.addActionListener(new java.awt.event.ActionListener() {
@@ -305,6 +310,11 @@ public class RealizarLlamada extends javax.swing.JDialog implements IRealizarLla
     private void bFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinalizarActionPerformed
         controlador.finalizarLlamada();
     }//GEN-LAST:event_bFinalizarActionPerformed
+
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        controlador.logOut();
+        dispose();
+    }//GEN-LAST:event_bSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b0;

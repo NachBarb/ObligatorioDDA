@@ -17,11 +17,12 @@ public class CargaDeDatos {
         
         
         // Carga CLIENTES
-        Cliente cli1 = new Cliente("Ignacio Barbisan", "12345678", 100,tipo3);
-        Cliente cli2 = new Cliente("Martin Bove", "87654321" , tipo2);
-        Cliente cli3 = new Cliente("Federico Garcia", "23456789", 300 , tipo3);
-        Cliente cli4 = new Cliente("Monica Pereira", "43287564", 500 , tipo2);
-        Cliente cli5 = new Cliente("Carolina Perez", "73625196", 650, tipo3);
+        Cliente cli1 = new Cliente("Ignacio Barbisan", "1", 100,tipo3);
+        Cliente cli2 = new Cliente("Martin Bove", "2" , tipo2);
+        Cliente cli3 = new Cliente("Federico Garcia", "3", 300 , tipo3);
+        Cliente cli4 = new Cliente("Monica Pereira", "4", 500 , tipo2);
+        Cliente cli5 = new Cliente("Carolina Perez", "5", 650, tipo3);
+        Cliente cli6 = new Cliente("Mike Ross", "6", 650, tipo3);
 
         // Carga SECTORES 
         Sector s1 = new Sector("RRHH", 1);
@@ -114,16 +115,6 @@ public class CargaDeDatos {
         s4.asignarLlamada(p8, call7);
         s5.asignarLlamada(p9, call8);
 
-        System.out.println("call1 " + call1.getId());
-        System.out.println("call2 " + call2.getId());
-        System.out.println("call3 " + call3.getId());
-        System.out.println("call4 " + call4.getId());
-        
-        System.out.println("p1 " + p1.getId());
-        System.out.println("p2 " + p2.getId());
-        System.out.println("p3 " + p3.getId());
-        System.out.println("p4 " + p4.getId());
-
         FachadaSistema.getInstancia().agregarTrabajador(t1);
         FachadaSistema.getInstancia().agregarTrabajador(t2);
         FachadaSistema.getInstancia().agregarTrabajador(t3);
@@ -139,6 +130,7 @@ public class CargaDeDatos {
         FachadaSistema.getInstancia().agregarCliente(cli3);
         FachadaSistema.getInstancia().agregarCliente(cli4);
         FachadaSistema.getInstancia().agregarCliente(cli5);
+        FachadaSistema.getInstancia().agregarCliente(cli6);
 
         /*MonitoreoControlador controllerMonitoreo = new MonitoreoControlador();
         System.out.println("Prueba mostrar sectores " + controllerMonitoreo.listarSectores());

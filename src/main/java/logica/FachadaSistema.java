@@ -68,4 +68,23 @@ public class FachadaSistema {
     public Llamada iniciarLlamada(Cliente cliente) throws SectorExcepcion{
     return servicioSector.crearLlamada(cliente);
     }
+    
+    public void inicioLlamada() {
+        servicioSector.inicioLlamada();
+    }
+    
+    public void terminoLlamada() {
+      servicioSector.terminoLlamada();
+    }
+    
+    
+    public void logOutCliente(Cliente cliente){
+    servicioCliente.logOutCliente(cliente);
+    }
+    
+    public void logOutTrabajador(Trabajador trabajador){
+        servicioTrabajador.logOutTrabajador(trabajador);
+    }
+    
+    
 }

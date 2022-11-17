@@ -42,6 +42,7 @@ public class AtenderLlamadaControlador implements Observer {
         vista.setTiempoP(puesto.promedioTiempoLlamada());
             this.puesto.puestoLibre();
             this.puesto.getSector().llamadaFinalizadaSector();
+            FachadaSistema.getInstancia().terminoLlamada();
         }
 
     }
@@ -61,6 +62,18 @@ public class AtenderLlamadaControlador implements Observer {
         vista.setLlamada(puesto.getTrabajador().getPuesto().getCantidadLlamadas());
         vista.setTiempoP(puesto.getTrabajador().getPuesto().promedioTiempoLlamada());
         puesto.puestoLibre();
+    }
+    
+    public void logOut(){
+        if (puesto.getLlamadaEnCurso() != null) {
+            if (puesto.getLlamadaEnCurso().getFin() == null) {
+
+                finalizarLlamada();
+            }
+
+        }
+    FachadaSistema.getInstancia().logOutTrabajador(puesto.getTrabajador());
+    puesto.setTrabajador(null);
     }
 
     @Override

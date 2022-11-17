@@ -31,17 +31,17 @@ public class ServicioTrabajador {
     
         public Trabajador loginTrabajador(String ciTrabajador, String password) throws TrabajadorExcepcion {
             Trabajador t = trabajadores.get(ciTrabajador);
-        if(trabajadoresLogueados.containsKey(t.getCi())){
-        throw new TrabajadorExcepcion(TRABAJADOR_YA_LOGUEADO);
-        }
         if (t == null || !t.esPassValida(password)) {
             throw new TrabajadorExcepcion(CI_YO_CONTRASEÑA_INCORRECTA);
         }
         
+        if(trabajadoresLogueados.containsKey(t.getCi())){
+        throw new TrabajadorExcepcion(TRABAJADOR_YA_LOGUEADO);
+        }
         return t;
     }    
         
-        public void logOutCliente(Trabajador trabajador){
-        
+        public void logOutTrabajador(Trabajador trabajador){
+        trabajadoresLogueados.remove(trabajador.getCi());
     }
 }

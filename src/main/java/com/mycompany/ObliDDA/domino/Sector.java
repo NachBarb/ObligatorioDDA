@@ -2,6 +2,7 @@ package com.mycompany.ObliDDA.domino;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 import observer.Observable;
 import observer.Observer;
 
@@ -23,6 +24,7 @@ public class Sector extends Observable implements Observer{
     
     private static final String PUESTOS_ASIGNADOS = "No hay puestos disponibles";
     private static final String TRABAJADOR_NO_SECTOR = "No corresponde al sector que intenta loguear";
+    private static final String NO_TRABAJADOR_SECTOR = "Sector no disponible";
     
     public Sector(String nombre, int cantidadPuestos) {
         this.trabajadores = new HashMap<>();
@@ -47,6 +49,10 @@ public class Sector extends Observable implements Observer{
     public ArrayList<Puesto> getPuestos() {
         return puestos;
     }   
+
+    public ArrayList<Llamada> getLlamadasEnEspera() {
+        return llamadasEnEspera;
+    }
     
     public ArrayList<Llamada> listarLlamadas(){
         ArrayList<Llamada> aux = new ArrayList<>();
@@ -108,12 +114,15 @@ public class Sector extends Observable implements Observer{
         return puesto;
     }
     
-    public Puesto asignarLlamada(Llamada call) {
+    public Puesto asignarLlamada(Llamada call) throws SectorExcepcion{
         System.out.println("Entre a asignar");
         Puesto puesto = null;
         boolean hayPuestoLibre = false;
+        boolean trabajadorEnSector = false;
         for (int i = 0; i < puestos.size() && !hayPuestoLibre; i++) {
-            if ( puestos.get(i).getTrabajador() != null && puestos.get(i).getLlamadaEnCurso() == null) {
+            if ( puestos.get(i).getTrabajador() != null ) {
+                trabajadorEnSector = true;
+                if(puestos.get(i).getLlamadaEnCurso() == null){
                 puesto = puestos.get(i);
                 call.setPuesto(puesto);
                 call.setNombreTrabajador(puesto.getTrabajador().getNombre());
@@ -121,14 +130,17 @@ public class Sector extends Observable implements Observer{
                 System.out.println("EncontrePuestoLibre");
                 hayPuestoLibre = true;
                 call.addObserver(puesto);
+                }
             }
+        }
+        if(!trabajadorEnSector){
+            throw new SectorExcepcion(NO_TRABAJADOR_SECTOR);
         }
         if(!hayPuestoLibre){
         this.llamadasEnEspera.add(call);
             System.out.println("Cantidad llmadas en espera "+llamadasEnEspera.size());
         call.llamadaEspera();
         }
-        
         return puesto;
     }    
     
@@ -146,12 +158,28 @@ public class Sector extends Observable implements Observer{
             System.out.println("Entre");
             Llamada proxLlamada = llamadasEnEspera.get(0);
             llamadasEnEspera.remove(0);
+            try{
             asignarLlamada(proxLlamada);
+            }catch(SectorExcepcion sectorExcepcion){
+                System.out.println(sectorExcepcion.getMessage());
+            }
             atender(proxLlamada.getPuesto(),proxLlamada);
             
         }
     }
     }
+    
+    public int tiempoEsperaEstimado(){
+        int tiempoEspera = 0;
+        
+        for(Puesto p : puestos){
+        tiempoEspera = tiempoEspera + p.promedioTiempoLlamada();
+        }
+        
+        TimeUnit time = TimeUnit.MINUTES;
+        return (int) time.convert(tiempoEspera, TimeUnit.SECONDS);
+        
+        }
     
     public void llamadaAtendidaSector(){
         notifyObservers(Observer.Eventos.SectorAtiende);
