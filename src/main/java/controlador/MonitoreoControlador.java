@@ -15,20 +15,38 @@ public class MonitoreoControlador implements Observer {
     
     private Monitoreo vista;
     private ModeloMonitoreo modelo;
+    private boolean mostrando = false;
+
+ 
     
     public MonitoreoControlador(Monitoreo vista, ModeloMonitoreo modelo) {
         this.vista = vista;
         this.modelo = modelo;
+        
+        for(Sector s : FachadaSistema.getInstancia().listarSectores()){
+        s.addObserver(this);
+        }
+        
     }
     
+       public void setMostrando(boolean mostrando) {
+        this.mostrando = mostrando;
+    }
+    
+    public void aster(){
+    this.modelo.setNumSector("");
+    }
+    
+    
     public void numeral(){
+        setMostrando(true);
         int numLlamada = 1;
         if (modelo.getNumSector() == "") {            
             ArrayList<Llamada> llamadasSectores = listarTodasLasLlamadas();    
             String[] arr = new String[llamadasSectores.size()];
             for (int i = 0; i < llamadasSectores.size(); i++) {
-                if (llamadasSectores.get(i).getAtencion() != null) {
-                    arr[i] = Integer.toString(numLlamada) + " - " + llamadasSectores.get(i).toString();
+                if (llamadasSectores.get(i) != null && llamadasSectores.get(i).getAtencion() != null ) {
+                    arr[i] = "                 " + Integer.toString(numLlamada) + " - " + llamadasSectores.get(i).toString();
                     numLlamada++;
                 }
             }
@@ -40,14 +58,13 @@ public class MonitoreoControlador implements Observer {
                 ArrayList<Llamada> llamadasSector = listarLlamadasPorSector(sector);
                 String[] arr2 = new String[llamadasSector.size()];
                 for (int i = 0; i < llamadasSector.size(); i++) {
-                    if (llamadasSector.get(i).getAtencion() != null) {
-                        arr2[i] = Integer.toString(numLlamada) + " - " + llamadasSector.get(i).toString();
+                    if (llamadasSector.get(i) != null && llamadasSector.get(i).getAtencion() != null) {
+                        arr2[i] = sector.getNombre() + " - " + Integer.toString(numLlamada) + " - " + llamadasSector.get(i).toString();
                         numLlamada++;
                     }
                 }
 
                 this.vista.cargarLlamadas(arr2);
-                this.modelo.setNumSector("");
 
             } catch(SectorExcepcion sectorExcepcion){
                 JOptionPane.showMessageDialog(vista, sectorExcepcion.getMessage());
@@ -80,6 +97,11 @@ public class MonitoreoControlador implements Observer {
 
     @Override
     public void update(Observable source, Object event) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(event.equals(Observer.Eventos.SectorAtiende) || event.equals(Observer.Eventos.SectorFinaliza) ){
+            if(mostrando){
+        numeral();
+            }
+        }
+        
     }
 }

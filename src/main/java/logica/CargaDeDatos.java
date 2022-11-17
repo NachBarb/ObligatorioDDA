@@ -9,12 +9,19 @@ import java.util.Date;
 public class CargaDeDatos {
     public static void cargar() throws ParseException {       
         
+        //Tipos De clientes
+        TipoCliente tipo1 = new ClienteExonerado();
+        TipoCliente tipo2 = new ClienteConCosto();
+        TipoCliente tipo3 = new ClienteGestor();
+        
+        
+        
         // Carga CLIENTES
-        Cliente cli1 = new Cliente("Ignacio Barbisan", "12345678");
-        Cliente cli2 = new Cliente("Martin Bove", "87654321");
-        Cliente cli3 = new Cliente("Federico Garcia", "23456789", 300);
-        Cliente cli4 = new Cliente("Monica Pereira", "43287564", 500);
-        Cliente cli5 = new Cliente("Carolina Perez", "73625196", 650);
+        Cliente cli1 = new Cliente("Ignacio Barbisan", "12345678", 100,tipo3);
+        Cliente cli2 = new Cliente("Martin Bove", "87654321" , tipo2);
+        Cliente cli3 = new Cliente("Federico Garcia", "23456789", 300 , tipo3);
+        Cliente cli4 = new Cliente("Monica Pereira", "43287564", 500 , tipo2);
+        Cliente cli5 = new Cliente("Carolina Perez", "73625196", 650, tipo3);
 
         // Carga SECTORES 
         Sector s1 = new Sector("RRHH", 1);
@@ -41,6 +48,17 @@ public class CargaDeDatos {
         Trabajador t8 = new Trabajador("Naomi Rodriguez", "88888888", "Password1", s4);
         Trabajador t10 = new Trabajador("Clarisa Martinez", "10345678", "Password1", s5);
 
+        //Carga trabajadores a los sectores
+        s1.agregarTrabajador(t1);
+        s2.agregarTrabajador(t2);
+        s2.agregarTrabajador(t3);
+        s3.agregarTrabajador(t4);
+        s3.agregarTrabajador(t5);
+        s4.agregarTrabajador(t6);
+        s4.agregarTrabajador(t7);
+        s4.agregarTrabajador(t8);
+        s5.agregarTrabajador(t10);
+        
         // Carga PUESTOS
         Puesto p1 = new Puesto(s1);
         Puesto p2 = new Puesto(s2);
@@ -73,7 +91,19 @@ public class CargaDeDatos {
         Llamada call7 = new Llamada(parseDate("2022-10-13 13:33:00"), parseDate("2022-10-13 13:35:00"), parseDate("2022-10-13 13:57:00"), "Conexion de internet inestable", cli2, p8, "Damian Martinez");
         Llamada call8 = new Llamada(parseDate("2022-10-25 14:12:00"), parseDate("2022-10-25 14:15:00"), parseDate("2022-10-25 14:37:00"), "Aire acondicionado para realizar limpieza", cli4, p9, "Naomi Rodriguez");
 
-
+        
+        //Carga de los costos a los clientes
+        cli1.agregarCosto(new CostoLlamada(cli1,call1));
+        cli2.agregarCosto(new CostoLlamada(cli2,call2));
+        cli3.agregarCosto(new CostoLlamada(cli3,call3));
+        cli4.agregarCosto(new CostoLlamada(cli4,call4));
+        cli5.agregarCosto(new CostoLlamada(cli5,call5));
+        cli2.agregarCosto(new CostoLlamada(cli2,call6));
+        cli2.agregarCosto(new CostoLlamada(cli2,call7));
+        cli4.agregarCosto(new CostoLlamada(cli4,call8));
+        
+        
+        
         //Asiganar llamadas a puestos (llamadas ya finalizadas)
         s1.asignarLlamada(p1, call1);
         s2.asignarLlamada(p2, call2);

@@ -26,6 +26,10 @@
           <Group type="102" attributes="0">
               <EmptySpace pref="13" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel2" min="-2" pref="873" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -74,10 +78,7 @@
                       <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
-                          <Component id="jLabel2" pref="881" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jScrollPane1" min="-2" pref="881" max="-2" attributes="0"/>
                       <EmptySpace pref="28" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -278,6 +279,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="*"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAsterActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane4">
       <AuxValues>
@@ -290,14 +294,14 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Para seleccionar un sector digite su n&#xfa;mero seguido &#xa;del #.&#xa;&#xa;Para mostrar las llamadas de todos los sectores &#xa;presione unicamente #.&#xa;"/>
+            <Property name="text" type="java.lang.String" value="Para seleccionar un sector digite su n&#xfa;mero seguido &#xa;del #.&#xa;&#xa;Para mostrar las llamadas de todos los sectores &#xa;presione unicamente #.&#xa;&#xa;Para resetear el filtro presione *."/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="#  -   Estado    -                Inicio              -             Atenci&#xf3;n             -                Fin                -  Puesto  -    Trabajador    -  Duraci&#xf3;n  -  Costo  -    Cliente    -  Saldo"/>
+        <Property name="text" type="java.lang.String" value=" Sector   -      #  -   Estado    -                Inicio              -             Atenci&#xf3;n             -                Fin                -  Puesto  -    Trabajador    -  Duraci&#xf3;n  -  Costo  -    Cliente    -  Saldo"/>
       </Properties>
     </Component>
   </SubComponents>

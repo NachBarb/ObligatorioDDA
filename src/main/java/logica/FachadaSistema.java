@@ -64,4 +64,8 @@ public class FachadaSistema {
     public ArrayList<Llamada> listarTodasLasLlamadas() {
         return servicioSector.listarTodasLasLlamadas();
     }
+    
+    public Llamada iniciarLlamada(Cliente cliente) throws SectorExcepcion{
+    return servicioSector.crearLlamada(cliente);
+    }
 }

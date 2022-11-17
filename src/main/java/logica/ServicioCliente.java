@@ -15,7 +15,10 @@ import java.util.HashMap;
 public class ServicioCliente {
 
     private static final String CI_INCORRECTA = "Cedula incorrecta.";
+    private static final String YA_LOGUEADO = "El cliente ya se encuentra logueado";
     private HashMap<String, Cliente> clientes = new HashMap<>();
+    private HashMap<String, Cliente> clientesLogueados = new HashMap<>();
+    
 
     public boolean agregarCliente(Cliente cliente) {
         boolean trabajadorAgregadoOk = false;
@@ -29,10 +32,15 @@ public class ServicioCliente {
     }
 
     public Cliente loginCliente(String ciCliente) throws ClienteExcepcion {
+        if(clientesLogueados.containsKey(ciCliente)){
+        throw new ClienteExcepcion(YA_LOGUEADO);
+        }
+        
         Cliente c = clientes.get(ciCliente);
         if (c == null) {
             throw new ClienteExcepcion(CI_INCORRECTA);
         }
+        clientesLogueados.put(ciCliente, c);
         return c;
     }
 }

@@ -2,22 +2,36 @@ package logica;
 
 import com.mycompany.ObliDDA.domino.Cliente;
 import com.mycompany.ObliDDA.domino.Llamada;
+import com.mycompany.ObliDDA.domino.Puesto;
 import com.mycompany.ObliDDA.domino.Sector;
 import com.mycompany.ObliDDA.domino.SectorExcepcion;
 import java.util.ArrayList;
+import java.util.Date;
+import observer.Observable;
+import observer.Observer;
 
 public class ServicioSector {
     private static final String NUMERO_S_INVALIDO = "Numero de sector no existe.";
+    private static final String CANTIDADLLAMADAS = "Se ha alcanzado la cantidad maxima de llamadas";
 
     private static int cantidadMaxLlamadas = 5;
+    private int cantidadLlamadasActuales;
 
     private ArrayList<Sector> sectores;
-    private ArrayList<Llamada> llamadasEnCurso;
-    private ArrayList<Llamada> llamadasEnEspera;
 
     public ServicioSector() {
+        this.cantidadLlamadasActuales = 0;
         this.sectores = new ArrayList<Sector>();
     }
+
+    public void inicioLlamada() {
+        this.cantidadLlamadasActuales = cantidadLlamadasActuales+1;
+    }
+    
+    public void terminoLlamada() {
+      this.cantidadLlamadasActuales = cantidadLlamadasActuales-1;
+    }
+
 
     public void agregarSector(Sector sector) {
         sectores.add(sector);
@@ -40,18 +54,17 @@ public class ServicioSector {
         return sec;
     }
     
-    public Llamada crearLlamada(Cliente cliente) {
-        // Se crea la llamada, una ves pasado el filtro de max 5 llamadas
-        // con fecha y hora de inicio desde que se acepto
-        Llamada call = new Llamada(cliente);
+    public Llamada crearLlamada(Cliente cliente) throws SectorExcepcion {
+        if(cantidadLlamadasActuales == cantidadMaxLlamadas){
+        throw new SectorExcepcion(CANTIDADLLAMADAS);
+        }
         
+        Llamada call = new Llamada(cliente);
         return call;
     }
     
     public ArrayList<Llamada> listarLlamadasPorSector(Sector sector) {
-        ArrayList<Llamada> aux = new ArrayList<>();
-        aux = sector.listarLlamadas();
-        return aux;
+        return sector.listarLlamadas();  
     }
     
     public ArrayList<Llamada> listarTodasLasLlamadas() {
