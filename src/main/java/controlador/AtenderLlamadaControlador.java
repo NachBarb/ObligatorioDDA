@@ -62,6 +62,18 @@ public class AtenderLlamadaControlador implements Observer {
         vista.setTiempoP(puesto.getTrabajador().getPuesto().promedioTiempoLlamada());
         puesto.puestoLibre();
     }
+    
+    public void logOut(){
+        if (puesto.getLlamadaEnCurso() != null) {
+            if (puesto.getLlamadaEnCurso().getFin() == null) {
+
+                finalizarLlamada();
+            }
+
+        }
+    FachadaSistema.getInstancia().logOutTrabajador(puesto.getTrabajador());
+    puesto.setTrabajador(null);
+    }
 
     @Override
     public void update(Observable source, Object event) {

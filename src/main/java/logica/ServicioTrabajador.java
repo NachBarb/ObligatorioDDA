@@ -41,7 +41,7 @@ public class ServicioTrabajador {
         return t;
     }    
         
-        public void logOutCliente(Trabajador trabajador){
-        
+        public void logOutTrabajador(Trabajador trabajador){
+        trabajadoresLogueados.remove(trabajador.getCi());
     }
 }

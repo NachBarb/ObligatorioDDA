@@ -76,4 +76,15 @@ public class FachadaSistema {
     public void terminoLlamada() {
       servicioSector.terminoLlamada();
     }
+    
+    
+    public void logOutCliente(Cliente cliente){
+    servicioCliente.logOutCliente(cliente);
+    }
+    
+    public void logOutTrabajador(Trabajador trabajador){
+        servicioTrabajador.logOutTrabajador(trabajador);
+    }
+    
+    
 }

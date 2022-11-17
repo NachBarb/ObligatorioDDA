@@ -34,7 +34,10 @@ public class RealizarLlamadaControlador implements Observer {
             loginCliente();
         } else {
             try {
-                modelo.setSector(FachadaSistema.getInstancia().buscarSector(Integer.parseInt(modelo.getNumSector())));
+                Sector sector = FachadaSistema.getInstancia().buscarSector(Integer.parseInt(modelo.getNumSector()));
+                modelo.setSector(sector);
+                this.vista.limpiarPantalla();
+                this.vista.mensajeEnPantalla("Usted se esta queriendo comunicar con \n " + sector);
             } catch (SectorExcepcion sectorExcepcion) {
                 vista.mostrarError(sectorExcepcion.getMessage());
                 this.modelo.setNumSector("");
@@ -70,32 +73,50 @@ public class RealizarLlamadaControlador implements Observer {
     }
 
     public void iniciarLlamada() {
+        if(modelo.getSector() == null){
+        vista.mostrarError("No ha selecionado ningun sector para realizar llamadas");
+        }else{
         try {
             modelo.setLlamada(FachadaSistema.getInstancia().iniciarLlamada(modelo.getCliente()));
-            this.vista.limpiarPantalla();
             modelo.getLlamada().addObserver(this);
-            modelo.getLlamada().iniciarLlamada();
             Puesto puestoAsignado = modelo.getSector().asignarLlamada(modelo.getLlamada());
-            FachadaSistema.getInstancia().inicioLlamada();
-            if (puestoAsignado == null) {
-                vista.limpiarPantalla();
-                vista.mensajeEnPantalla("Su llamada se ha puesto en espera");
-            } else {
-                modelo.setPuesto(puestoAsignado);
-                 modelo.getSector().atender(puestoAsignado,modelo.getLlamada());              
+            this.vista.limpiarPantalla();
+            modelo.getLlamada().iniciarLlamada();
+                FachadaSistema.getInstancia().inicioLlamada();
+                if (puestoAsignado == null) {
+                    vista.limpiarPantalla();
+                    vista.mensajeEnPantalla("Aguarde en línea, Ud. se encuentra a " + modelo.getSector().getLlamadasEnEspera().size() 
+                            + " llamadas de ser atendido, la espera estimada es de "+ 
+                            Integer.toString(modelo.getSector().tiempoEsperaEstimado() * modelo.getSector().getLlamadasEnEspera().size())
+                            +" minutos");
+                } else {
+                    modelo.setPuesto(puestoAsignado);
+                    modelo.getSector().atender(puestoAsignado, modelo.getLlamada());
+                }
+        } catch (SectorExcepcion sectorExcepcion) {
+            vista.mostrarError(sectorExcepcion.getMessage());
+        }
+        }
+    }
+
+    public void finalizarLlamada() {
+        if (modelo.getLlamada() != null && modelo.getLlamada().getFin() == null) {
+            vista.limpiarPantalla();
+            modelo.getLlamada().finalizarLlamada();
+            modelo.setLlamada(null);
+            FachadaSistema.getInstancia().terminoLlamada();
+        }
+    }
+
+    public void logOut() {
+        if (modelo.getLlamada() != null) {
+            if (modelo.getLlamada().getFin() == null) {
+
+                finalizarLlamada();
             }
 
-        } catch (SectorExcepcion sectorExcepcion) {
-        vista.mostrarError(sectorExcepcion.getMessage());        }
-    }
-    
-    public void finalizarLlamada() {
-        if(modelo.getLlamada() != null && modelo.getLlamada().getFin() == null){
-        vista.limpiarPantalla();
-        modelo.getLlamada().finalizarLlamada();
-        modelo.setLlamada(null);
-        FachadaSistema.getInstancia().terminoLlamada();
         }
+        FachadaSistema.getInstancia().logOutCliente(modelo.getCliente());
     }
 
     public void digito(String caracter) {
@@ -119,7 +140,7 @@ public class RealizarLlamadaControlador implements Observer {
         if (event.equals(Observer.Eventos.LlamadaFinalizada)) {
             modelo.getLlamada().setFin(new Date());
             vista.limpiarPantalla();
-            vista.mensajeEnPantalla(modelo.mensajeFinDeLlamada());
+            vista.mensajeEnPantalla(modelo.mensajeFinDeLlamada() + "\n\n\n" + "Puede volver a iniciar una llamada con el \n sector " + modelo.getSector() + " apretando Iniciar");
         }
     }
 

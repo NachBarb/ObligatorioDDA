@@ -225,7 +225,7 @@ public class AtenderLlamada extends javax.swing.JDialog implements IAtenderLlama
     }//GEN-LAST:event_tFinalizarLlamadaActionPerformed
 
     private void tSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tSalirActionPerformed
-        // TODO add your handling code here:
+        controlador.logOut();
         this.dispose();
     }//GEN-LAST:event_tSalirActionPerformed
 
