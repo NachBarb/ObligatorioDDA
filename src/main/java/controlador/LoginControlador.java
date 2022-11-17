@@ -2,7 +2,7 @@ package controlador;
 
 import com.mycompany.ObliDDA.domino.Trabajador;
 import com.mycompany.ObliDDA.domino.TrabajadorExcepcion;
-import com.mycompany.ObliDDA.iu.Login;
+import com.mycompany.ObliDDA.iu.ILogin;
 import javax.swing.JOptionPane;
 import logica.FachadaSistema;
 
@@ -12,9 +12,9 @@ import logica.FachadaSistema;
  */
 public class LoginControlador {
 
-    private Login vista;
+    private ILogin vista;
 
-    public LoginControlador(Login vista) {
+    public LoginControlador(ILogin vista) {
         this.vista = vista;
     }
 
@@ -28,7 +28,7 @@ public class LoginControlador {
             trabajador.getSector().asignarTrabajador(trabajador);
             vista.ejecutarSiguienteCU(trabajador);
         } catch (TrabajadorExcepcion trabajadorExcepcion) {
-            JOptionPane.showMessageDialog(vista, trabajadorExcepcion.getMessage());
+            vista.mostrarError(trabajadorExcepcion.getMessage());
         }
 
     }

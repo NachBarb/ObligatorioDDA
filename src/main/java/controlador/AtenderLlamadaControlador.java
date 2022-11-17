@@ -7,7 +7,7 @@ package controlador;
 import com.mycompany.ObliDDA.domino.Trabajador;
 import com.mycompany.ObliDDA.domino.Llamada;
 import com.mycompany.ObliDDA.domino.Puesto;
-import com.mycompany.ObliDDA.iu.AtenderLlamada;
+import com.mycompany.ObliDDA.iu.IAtenderLlamada;
 import java.util.ArrayList;
 import logica.FachadaSistema;
 import observer.Observable;
@@ -19,10 +19,10 @@ import observer.Observer;
  */
 public class AtenderLlamadaControlador implements Observer {
 
-    private AtenderLlamada vista;
+    private IAtenderLlamada vista;
     private Puesto puesto;
 
-    public AtenderLlamadaControlador(AtenderLlamada vista, Trabajador trabajador) {
+    public AtenderLlamadaControlador(IAtenderLlamada vista, Trabajador trabajador) {
 
         this.vista = vista;
         this.puesto = trabajador.getPuesto();
@@ -60,6 +60,7 @@ public class AtenderLlamadaControlador implements Observer {
         vista.setPuesto(puesto.getTrabajador().getPuesto().getId());
         vista.setLlamada(puesto.getTrabajador().getPuesto().getCantidadLlamadas());
         vista.setTiempoP(puesto.getTrabajador().getPuesto().promedioTiempoLlamada());
+        puesto.puestoLibre();
     }
 
     @Override

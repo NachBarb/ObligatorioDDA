@@ -5,13 +5,14 @@
 package com.mycompany.ObliDDA.iu;
 
 import controlador.RealizarLlamadaControlador;
+import javax.swing.JOptionPane;
 import modelo.ModeloRealizarLlamada;
 
 /**
  *
  * @author Martin
  */
-public class RealizarLlamada extends javax.swing.JDialog {
+public class RealizarLlamada extends javax.swing.JDialog implements IRealizarLlamada {
 
     /**
      * Creates new form RealizarLlamada
@@ -328,20 +329,28 @@ public class RealizarLlamada extends javax.swing.JDialog {
     private javax.swing.JTextArea taMensajeCentral;
     // End of variables declaration//GEN-END:variables
 
-    protected void setControlador(RealizarLlamadaControlador controlador) {
+    private void setControlador(RealizarLlamadaControlador controlador) {
         this.controlador = controlador;
     }
 
+    @Override
     public void mensajeEnPantalla(String mensaje) {
         taMensajeCentral.append(mensaje);
     }
     
+    @Override
     public void limpiarPantalla(){
         taMensajeCentral.setText("");
     }
     
+    @Override
     public void cargarSectores(String[] listaSectores){
         lSectores.setListData(listaSectores);
+    }
+    
+        @Override
+    public void mostrarError( String mensaje ){
+    JOptionPane.showMessageDialog( this, mensaje);
     }
     
 }

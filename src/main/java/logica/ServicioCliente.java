@@ -43,4 +43,10 @@ public class ServicioCliente {
         clientesLogueados.put(ciCliente, c);
         return c;
     }
+    
+    public void logOutCliente(Cliente cliente){
+    clientesLogueados.remove(cliente.getCi());
+    }
+    
+    
 }

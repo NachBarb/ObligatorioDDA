@@ -3,7 +3,7 @@ package controlador;
 import com.mycompany.ObliDDA.domino.Llamada;
 import com.mycompany.ObliDDA.domino.Sector;
 import com.mycompany.ObliDDA.domino.SectorExcepcion;
-import com.mycompany.ObliDDA.iu.Monitoreo;
+import com.mycompany.ObliDDA.iu.IMonitoreo;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import logica.FachadaSistema;
@@ -13,13 +13,13 @@ import observer.Observer;
 
 public class MonitoreoControlador implements Observer {
     
-    private Monitoreo vista;
+    private IMonitoreo vista;
     private ModeloMonitoreo modelo;
     private boolean mostrando = false;
 
  
     
-    public MonitoreoControlador(Monitoreo vista, ModeloMonitoreo modelo) {
+    public MonitoreoControlador(IMonitoreo vista, ModeloMonitoreo modelo) {
         this.vista = vista;
         this.modelo = modelo;
         
@@ -67,7 +67,7 @@ public class MonitoreoControlador implements Observer {
                 this.vista.cargarLlamadas(arr2);
 
             } catch(SectorExcepcion sectorExcepcion){
-                JOptionPane.showMessageDialog(vista, sectorExcepcion.getMessage());
+                vista.mostrarError(sectorExcepcion.getMessage());
                 this.modelo.setNumSector("");
             }                 
         }
