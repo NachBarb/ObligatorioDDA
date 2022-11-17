@@ -1,9 +1,10 @@
 package com.mycompany.ObliDDA.iu;
 
 import controlador.MonitoreoControlador;
+import javax.swing.JOptionPane;
 import modelo.ModeloMonitoreo;
 
-public class Monitoreo extends javax.swing.JDialog {
+public class Monitoreo extends javax.swing.JDialog implements IMonitoreo {
 
     /**
      * Creates new form RealizarLlamada
@@ -315,16 +316,22 @@ public class Monitoreo extends javax.swing.JDialog {
     private javax.swing.JList<String> lSectores;
     // End of variables declaration//GEN-END:variables
 
-    protected void setControlador(MonitoreoControlador controlador) {
+    private void setControlador(MonitoreoControlador controlador) {
         this.controlador = controlador;
     }
     
+    @Override
     public void cargarSectores(String[] listaSectores){
         lSectores.setListData(listaSectores);
     }
     
+    @Override
     public void cargarLlamadas(String[] listaLlamadas){
         lLlamadas.setListData(listaLlamadas);
     }
     
+        @Override
+    public void mostrarError( String mensaje ){
+    JOptionPane.showMessageDialog( this, mensaje);
+    }
 }

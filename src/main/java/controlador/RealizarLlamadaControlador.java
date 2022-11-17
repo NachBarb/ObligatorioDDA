@@ -5,7 +5,7 @@ import com.mycompany.ObliDDA.domino.CostoLlamada;
 import com.mycompany.ObliDDA.domino.Puesto;
 import com.mycompany.ObliDDA.domino.Sector;
 import com.mycompany.ObliDDA.domino.SectorExcepcion;
-import com.mycompany.ObliDDA.iu.RealizarLlamada;
+import com.mycompany.ObliDDA.iu.IRealizarLlamada;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -21,9 +21,9 @@ import observer.Observer;
 public class RealizarLlamadaControlador implements Observer {
 
     private ModeloRealizarLlamada modelo;
-    private RealizarLlamada vista;
+    private IRealizarLlamada vista;
 
-    public RealizarLlamadaControlador(RealizarLlamada vista, ModeloRealizarLlamada modelo) {
+    public RealizarLlamadaControlador(IRealizarLlamada vista, ModeloRealizarLlamada modelo) {
         this.modelo = modelo;
         this.vista = vista;
         this.modelo.setCedula("");
@@ -36,7 +36,7 @@ public class RealizarLlamadaControlador implements Observer {
             try {
                 modelo.setSector(FachadaSistema.getInstancia().buscarSector(Integer.parseInt(modelo.getNumSector())));
             } catch (SectorExcepcion sectorExcepcion) {
-                JOptionPane.showMessageDialog(vista, sectorExcepcion.getMessage());
+                vista.mostrarError(sectorExcepcion.getMessage());
                 this.modelo.setNumSector("");
             }
 
@@ -51,7 +51,7 @@ public class RealizarLlamadaControlador implements Observer {
             this.vista.mensajeEnPantalla("Para comunicarse con un sector digite \n su identificador seguido de la tecla numeral \n y presione iniciar");
             cargarSectores();
         } catch (ClienteExcepcion clienteExcepcion) {
-            JOptionPane.showMessageDialog(vista, clienteExcepcion.getMessage());
+            vista.mostrarError(clienteExcepcion.getMessage());
             this.modelo.setCedula("");
         }
 
@@ -86,8 +86,7 @@ public class RealizarLlamadaControlador implements Observer {
             }
 
         } catch (SectorExcepcion sectorExcepcion) {
-            JOptionPane.showMessageDialog(vista, sectorExcepcion.getMessage());
-        }
+vista.mostrarError(sectorExcepcion.getMessage());        }
     }
     
     public void finalizarLlamada() {

@@ -12,10 +12,11 @@ import javax.swing.JDialog;
  *
  * @author Martin
  */
-public class AtenderLlamada extends javax.swing.JDialog {
+public class AtenderLlamada extends javax.swing.JDialog implements IAtenderLlamada {
 
     private Trabajador trabajador;
 
+    @Override
     public Trabajador getTrabajador() {
         return trabajador;
     }
@@ -255,38 +256,47 @@ public class AtenderLlamada extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     
+    @Override
     public void setStatus(String status) {
         tStatus.setText(status);
     }
 
+    @Override
     public void setDescripcion(String descripcion) {
         tDescripcion.setText(descripcion);
     }
 
+    @Override
     public void setTiempoP(int tiempoP) {
         tTiempoP.setText(Integer.toString(tiempoP));
     }
 
+    @Override
     public void setSector(String sector) {
         tSector.setText(sector);
     }
 
+    @Override
     public void setPuesto(int puesto) {
         tPuesto.setText(Integer.toString(puesto));
     }
 
+    @Override
     public void setLlamada(int llamada) {
         tLlamada.setText(Integer.toString(llamada));
     }
 
+    @Override
     public void setTrabajadorNombre(String trabajador) {
         tTrabajadorNombre.setText(trabajador);
     }
 
+    @Override
     public void setCliente(String cliente) {
         tCliente.setText(cliente);
     }
     
+    @Override
     public String devolverDesc(){
     return tDescripcion.getText();
     }

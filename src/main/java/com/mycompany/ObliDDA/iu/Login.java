@@ -15,11 +15,11 @@ import logica.FachadaSistema;
  *
  * @author Martin
  */
-public class Login extends javax.swing.JDialog {
+public class Login extends javax.swing.JDialog implements ILogin {
 
     private LoginControlador controlador;
 
-    public void setControlador(LoginControlador controlador) {
+    private void setControlador(LoginControlador controlador) {
         this.controlador = controlador;
     }
 
@@ -115,19 +115,29 @@ public class Login extends javax.swing.JDialog {
     private javax.swing.JPasswordField tPass;
     // End of variables declaration//GEN-END:variables
 
+    @Override
     public String getCi() {
         return tCi.getText();
     }
 
+    @Override
     public String getPassword() {
         return tPass.getText();
     }
 
 
+    @Override
     public void ejecutarSiguienteCU(Trabajador trabajador) {
 
         AtenderLlamada all = new AtenderLlamada((java.awt.Frame) this.getParent(), false, trabajador);
         all.setVisible(true);
         dispose();
     }
+    
+    
+    @Override
+    public void mostrarError( String mensaje ){
+    JOptionPane.showMessageDialog( this, mensaje);
+    }
+    
 }
