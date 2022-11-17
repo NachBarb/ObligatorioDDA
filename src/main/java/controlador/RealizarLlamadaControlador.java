@@ -38,7 +38,6 @@ public class RealizarLlamadaControlador implements Observer {
                 modelo.setSector(sector);
                 this.vista.limpiarPantalla();
                 this.vista.mensajeEnPantalla("Usted se esta queriendo comunicar con \n " + sector);
-                sector.addObserver(this);
             } catch (SectorExcepcion sectorExcepcion) {
                 vista.mostrarError(sectorExcepcion.getMessage());
                 this.modelo.setNumSector("");
