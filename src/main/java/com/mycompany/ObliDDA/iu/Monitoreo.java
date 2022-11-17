@@ -143,7 +143,7 @@ public class Monitoreo extends javax.swing.JDialog implements IMonitoreo {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Para seleccionar un sector digite su número seguido \ndel #.\n\nPara mostrar las llamadas de todos los sectores \npresione unicamente #.\n\nPara resetear el filtro presione *.");
+        jTextArea1.setText("Para seleccionar un sector digite su número seguido \ndel #.\n\nPara mostrar las llamadas de todos los sectores \npresione * seguido de  #.\n\n");
         jScrollPane4.setViewportView(jTextArea1);
 
         jLabel2.setText(" Sector   -      #  -   Estado    -                Inicio              -             Atención             -                Fin                -  Puesto  -    Trabajador    -  Duración  -  Costo  -    Cliente    -  Saldo");

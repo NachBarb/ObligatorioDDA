@@ -38,6 +38,7 @@ public class RealizarLlamadaControlador implements Observer {
                 modelo.setSector(sector);
                 this.vista.limpiarPantalla();
                 this.vista.mensajeEnPantalla("Usted se esta queriendo comunicar con \n " + sector);
+                sector.addObserver(this);
             } catch (SectorExcepcion sectorExcepcion) {
                 vista.mostrarError(sectorExcepcion.getMessage());
                 this.modelo.setNumSector("");
@@ -84,11 +85,7 @@ public class RealizarLlamadaControlador implements Observer {
             modelo.getLlamada().iniciarLlamada();
                 FachadaSistema.getInstancia().inicioLlamada();
                 if (puestoAsignado == null) {
-                    vista.limpiarPantalla();
-                    vista.mensajeEnPantalla("Aguarde en línea, Ud. se encuentra a " + modelo.getSector().getLlamadasEnEspera().size() 
-                            + " llamadas de ser atendido, la espera estimada es de "+ 
-                            Integer.toString(modelo.getSector().tiempoEsperaEstimado() * modelo.getSector().getLlamadasEnEspera().size())
-                            +" minutos");
+                    mensajeEspera();
                 } else {
                     modelo.setPuesto(puestoAsignado);
                     modelo.getSector().atender(puestoAsignado, modelo.getLlamada());
@@ -97,6 +94,15 @@ public class RealizarLlamadaControlador implements Observer {
             vista.mostrarError(sectorExcepcion.getMessage());
         }
         }
+    }
+    
+    
+    public void mensajeEspera(){
+                        vista.limpiarPantalla();
+                    vista.mensajeEnPantalla("Aguarde en línea, Ud. se encuentra a " + modelo.getSector().getLlamadasEnEspera().size() 
+                            + " llamadas de ser atendido, \n la espera estimada es de "+ 
+                            Integer.toString(modelo.getSector().tiempoEsperaEstimado() * modelo.getSector().getLlamadasEnEspera().size())
+                            +" minutos");
     }
 
     public void finalizarLlamada() {
@@ -133,6 +139,7 @@ public class RealizarLlamadaControlador implements Observer {
             vista.mensajeEnPantalla("Su llamada esta siendo derivada");
         }
         if (event.equals(Observer.Eventos.LlamadaAtendida)) {
+            vista.limpiarPantalla();
             modelo.getLlamada().setAtencion(new Date());
             modelo.setPuesto(modelo.getLlamada().getPuesto());
             vista.mensajeEnPantalla(modelo.mensajeInicioDeLlamada());
@@ -140,8 +147,9 @@ public class RealizarLlamadaControlador implements Observer {
         if (event.equals(Observer.Eventos.LlamadaFinalizada)) {
             modelo.getLlamada().setFin(new Date());
             vista.limpiarPantalla();
-            vista.mensajeEnPantalla(modelo.mensajeFinDeLlamada() + "\n\n\n" + "Puede volver a iniciar una llamada con el \n sector " + modelo.getSector() + " apretando Iniciar");
-        }
+            vista.mensajeEnPantalla(modelo.mensajeFinDeLlamada());
+            modelo.setSector(null);
+        }        
     }
 
 }
